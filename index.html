@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Kho Đề Ôn Vào 10 — Họ Văn & Cô Oanh</title>
+  <meta name="description" content="Kho đề ôn thi vào 10 Tỉnh Tuyên Quang - Nguyễn Minh Tuấn, Vũ Tiến Phúc, GV Vũ Thị Kiều Oanh">
+  <style>
+    :root{
+      --bg:#f5f6f7; --card:#fff; --accent:#0b7285; --orange:#f39c12;
+      --muted:#6b7280; --max:1100px; --radius:10px; --pad:18px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,Arial;background:var(--bg);color:#071124}
+    a{color:inherit}
+    .wrap{max-width:var(--max);margin:18px auto;padding:0 16px}
+
+    /* header */
+    header{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 0}
+    .brand{display:flex;align-items:center;gap:12px}
+    .logo{width:56px;height:56px;border-radius:8px;background:linear-gradient(135deg,var(--accent),#0ea5a4);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700}
+    .logo img{height:46px;border-radius:4px;display:block}
+    .titles{line-height:1}
+    .titles h1{font-size:18px;margin:0}
+    .titles p{margin:2px 0 0 0;color:var(--muted);font-size:13px}
+
+    /* actions */
+    .actions{display:flex;gap:10px;align-items:center}
+    .search{min-width:220px;flex:1}
+    .search input{width:100%;padding:10px 14px;border-radius:22px;border:1px solid #e6e6e6}
+    .btn{display:inline-block;padding:9px 14px;border-radius:20px;text-decoration:none;font-size:14px;background:var(--accent);color:#fff}
+
+    /* nav */
+    nav{margin-top:8px;background:linear-gradient(90deg,var(--orange),#f5a623);border-radius:10px;padding:8px}
+    nav .inner{max-width:var(--max);margin:0 auto;padding:0 16px;display:flex;align-items:center;gap:12px;overflow:auto}
+    nav a{color:#fff;padding:8px 12px;border-radius:8px;text-decoration:none;font-weight:600}
+    nav a.active{background:rgba(255,255,255,0.15)}
+
+    /* main */
+    main{margin-top:16px}
+    .hero{background:var(--card);padding:20px;border-radius:12px;border:1px solid #ececec;box-shadow:0 6px 18px rgba(2,6,23,0.04)}
+    .title{font-size:24px;margin:0 0 6px 0}
+    .meta{color:var(--muted);font-size:14px;margin-bottom:12px}
+    .cta-row{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-bottom:12px}
+    .pill{background:#fff;border:1px solid #f0f0f0;padding:6px 10px;border-radius:999px;color:var(--muted);font-size:13px}
+
+    /* sections */
+    .sections{display:grid;grid-template-columns:1fr;gap:14px;margin-top:14px}
+    .card{background:var(--card);padding:16px;border-radius:12px;border:1px solid #ececec}
+    .card h2{margin:0 0 10px 0;font-size:16px}
+    .list{display:flex;flex-direction:column;gap:8px}
+    .item{display:flex;align-items:center;justify-content:space-between;padding:10px;border-radius:10px;background:linear-gradient(180deg,rgba(255,255,255,0.6),rgba(255,255,255,0.95));border:1px dashed rgba(7,17,36,0.03);text-decoration:none;color:inherit}
+    .left{display:flex;gap:12px;align-items:center}
+    .idx{width:44px;height:44px;border-radius:8px;background:var(--accent);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700}
+    .desc{color:var(--muted);font-size:13px}
+    .open{color:var(--accent);font-weight:700}
+
+    /* news */
+    .news-list{display:flex;flex-direction:column;gap:10px}
+    .news-item{padding:12px;border-radius:8px;background:#fbfcfd;border:1px solid #f0f6f6}
+    .news-item time{display:block;color:var(--muted);font-size:13px;margin-bottom:6px}
+
+    .project-info{margin-top:12px;color:var(--muted);font-size:14px;padding:12px;background:#fbfcfd;border:1px solid #f0f6f6;border-radius:10px}
+
+    footer{margin:18px 0;color:var(--muted);font-size:13px;text-align:center}
+
+    @media(min-width:880px){.sections{grid-template-columns:repeat(3,1fr)} .search{min-width:420px}}
+    @media(max-width:720px){.search{display:none}.titles h1{font-size:16px}.hero{padding:14px}}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <div class="logo" aria-hidden>
+          <img src="/mnt/data/0815714e-70d8-460b-af63-ff934b67a82c.png" alt="HV">
+        </div>
+        <div class="titles">
+          <h1>Kho Đề Ôn Vào 10 — Học Văn cùng Cô Oanh</h1>
+          <p>Nguyễn Minh Tuấn · Vũ Tiến Phúc · GV Vũ Thị Kiều Oanh</p>
+        </div>
+      </div>
+
+      <div class="actions">
+        <div class="search"><input placeholder="Tìm đề, từ khóa..."></div>
+        <a class="btn" href="mailto:minhtuan11hg@gmail.com">Liên hệ</a>
+      </div>
+    </header>
+
+    <nav aria-label="chuyên mục">
+      <div class="inner">
+        <a href="#home" class="nav-link active">Trang chủ</a>
+        <a href="#docs" class="nav-link">Tài liệu</a>
+        <a href="#news" class="nav-link">Tin tức</a>
+        <a href="#contact" class="nav-link">Liên hệ</a>
+      </div>
+    </nav>
+
+    <main>
+      <!-- HOME -->
+      <section id="home" class="hero" role="main">
+        <h1 class="title">Tổng hợp đề ôn — Môn Ngữ Văn</h1>
+        <div class="meta">Mục tiêu: tài liệu ôn thi vào 10 — Tỉnh Tuyên Quang.</div>
+
+        <div class="cta-row">
+          <a class="pill" href="#docs">3 bài — Thơ 8 chữ</a>
+          <a class="pill" href="#docs">3 bài — Song thất</a>
+          <a class="pill" href="#docs">6 đề — Thơ hay</a>
+        </div>
+
+        <div class="project-info" aria-hidden>
+          Dự án: <strong>Nguyễn Minh Tuấn</strong> · <strong>Vũ Tiến Phúc</strong> · Chủ trì (GV): <strong>Vũ Thị Kiều Oanh</strong><br>
+          Chủ đề: Kho đề ôn thi vào 10 — Tuyên Quang. Liên hệ: <a href="mailto:minhtuan11hg@gmail.com">minhtuan11hg@gmail.com</a>
+        </div>
+      </section>
+
+      <!-- DOCS / TÀI LIỆU -->
+      <section id="docs" class="sections" aria-label="tài liệu">
+        <div class="card">
+          <h2>Phần A — Thơ 8 chữ (3 bài)</h2>
+          <div class="list">
+            <a class="item" href="bai1.html"><div class="left"><div class="idx">1</div><div><strong>Bài 1 — Thơ 8 chữ</strong><div class="desc">Placeholder</div></div></div><div class="open">Mở</div></a>
+            <a class="item" href="bai2.html"><div class="left"><div class="idx">2</div><div><strong>Bài 2 — Thơ 8 chữ</strong><div class="desc">Placeholder</div></div></div><div class="open">Mở</div></a>
+            <a class="item" href="bai3.html"><div class="left"><div class="idx">3</div><div><strong>Bài 3 — Thơ 8 chữ</strong><div class="desc">Placeholder</div></div></div><div class="open">Mở</div></a>
+          </div>
+        </div>
+
+        <div class="card">
+          <h2>Phần B — Thơ song thất (3 bài)</h2>
+          <div class="list">
+            <a class="item" href="bai4.html"><div class="left"><div class="idx">4</div><div><strong>Bài 4 — Song thất</strong><div class="desc">Placeholder</div></div></div><div class="open">Mở</div></a>
+            <a class="item" href="bai5.html"><div class="left"><div class="idx">5</div><div><strong>Bài 5 — Song thất</strong><div class="desc">Placeholder</div></div></div><div class="open">Mở</div></a>
+            <a class="item" href="bai6.html"><div class="left"><div class="idx">6</div><div><strong>Bài 6 — Song thất</strong><div class="desc">Placeholder</div></div></div><div class="open">Mở</div></a>
+          </div>
+        </div>
+
+        <div class="card">
+          <h2>Phần C — 6 đề thơ hay</h2>
+          <div class="list">
+            <a class="item" href="bai7.html"><div class="left"><div class="idx">7</div><div><strong>Bài 7</strong><div class="desc">Placeholder</div></div></div><div class="open">Mở</div></a>
+            <a class="item" href="bai8.html"><div class="left"><div class="idx">8</div><div><strong>Bài 8</strong><div class="desc">Placeholder</div></div></div><div class="open">Mở</div></a>
+            <a class="item" href="bai9.html"><div class="left"><div class="idx">9</div><div><strong>Bài 9</strong><div class="desc">Placeholder</div></div></div><div class="open">Mở</div></a>
+            <a class="item" href="bai10.html"><div class="left"><div class="idx">10</div><div><strong>Bài 10</strong><div class="desc">Placeholder</div></div></div><div class="open">Mở</div></a>
+            <a class="item" href="bai11.html"><div class="left"><div class="idx">11</div><div><strong>Bài 11</strong><div class="desc">Placeholder</div></div></div><div class="open">Mở</div></a>
+            <a class="item" href="bai12.html"><div class="left"><div class="idx">12</div><div><strong>Bài 12</strong><div class="desc">Placeholder</div></div></div><div class="open">Mở</div></a>
+          </div>
+        </div>
+      </section>
+
+      <!-- NEWS / TIN TỨC -->
+      <section id="news" style="margin-top:16px">
+        <div class="card">
+          <h2>Tin tức & Cập nhật</h2>
+          <div class="news-list">
+            <article class="news-item">
+              <time datetime="2025-11-25">25/11/2025</time>
+              <strong>Cập nhật: Thêm 3 đề thơ 8 chữ</strong>
+              <p class="desc">hoàn chỉnh.</p>
+            </article>
+          <div class="news-list">
+            <article class="news-item">
+              <time datetime="2025-11-25">25/11/2025</time>
+              <strong>Cập nhật: Thêm 6 đề thơ 8 chữ</strong>
+              <p class="desc">hoàn chỉnh.</p>
+            </article>
+
+          <div class="news-list">
+            <article class="news-item">
+              <time datetime="2025-11-25">25/11/2025</time>
+              <strong>Cập nhật: Thêm 3 đề thơ song thất</strong>
+              <p class="desc">hoàn chỉnh.</p>
+            </article>
+
+            <article class="news-item">
+              <time datetime="2025-11-24">24/11/2025</time>
+              <strong>Hoàn thành.</strong>
+              <p class="desc">Trang chủ đã hoàn chỉnh.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- CONTACT anchor -->
+      <section id="contact" style="margin-top:16px">
+        <div class="card">
+          <h2>Liên hệ</h2>
+          <p class="desc">Mail liên hệ dự án: <a href="mailto:minhtuan11hg@gmail.com">minhtuan11hg@gmail.com</a></p>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      © Kho Đề Ôn Vào 10 — Tuyên Quang · Liên hệ: <a href="mailto:minhtuan11hg@gmail.com">minhtuan11hg@gmail.com</a>
+    </footer>
+  </div>
+
+  <script>
+    // Basic nav active update on scroll + click
+    document.querySelectorAll('nav .inner a').forEach(a=>{
+      a.addEventListener('click', e=>{
+        const href = a.getAttribute('href');
+        if(href && href.startsWith('#')){
+          document.querySelectorAll('nav .inner a').forEach(x=>x.classList.remove('active'));
+          a.classList.add('active');
+        }
+      });
+    });
+
+    // IntersectionObserver to change active on scroll
+    const sections = Array.from(document.querySelectorAll('main > section'));
+    const obsOptions = { root: null, rootMargin: '0px', threshold: 0.45 };
+    const observer = new IntersectionObserver((entries)=>{
+      entries.forEach(ent=>{
+        if(ent.isIntersecting){
+          const id = ent.target.id;
+          document.querySelectorAll('nav .inner a').forEach(a=>{
+            a.classList.toggle('active', a.getAttribute('href') === '#' + id);
+          });
+        }
+      });
+    }, obsOptions);
+    sections.forEach(sec => observer.observe(sec));
+  </script>
+</body>
+</html>
+>
