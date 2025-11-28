@@ -5,75 +5,205 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Kho Đề Ôn Vào 10 — Học Văn cùng Cô Oanh</title>
   <meta name="description" content="Kho đề ôn thi vào 10 Tỉnh Tuyên Quang - Nguyễn Minh Tuấn, Vũ Tiến Phúc, GV Vũ Thị Kiều Oanh">
+  <meta name="theme-color" content="#0b7285" />
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
+
   <style>
     :root{
-      --bg:#f5f6f7; --card:#fff; --accent:#0b7285; --orange:#f39c12;
-      --muted:#6b7280; --max:1100px; --radius:10px; --pad:18px;
+      --bg:#f5f6f7;
+      --card:#ffffff;
+      --accent:#0b7285;
+      --accent-2:#0ea5a4;
+      --orange:#f39c12;
+      --muted:#6b7280;
+      --muted-2:#8b94a0;
+      --glass: rgba(255,255,255,0.6);
+      --max:1100px;
+      --radius:12px;
+      --pad:18px;
+      --shadow-1: 0 6px 18px rgba(2,6,23,0.06);
+      --shadow-2: 0 12px 28px rgba(2,6,23,0.09);
+      --ui-gap:12px;
     }
+
+    /* reset & base */
     *{box-sizing:border-box}
     html{scroll-behavior:smooth}
-    body{margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,Arial;background:var(--bg);color:#071124}
-    a{color:inherit}
+    body{
+      margin:0;
+      font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background: linear-gradient(180deg,#f7f8f9 0%, var(--bg) 100%);
+      color:#071124;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.45;
+      padding-bottom:40px;
+    }
+    a{color:inherit;text-decoration:none}
     .wrap{max-width:var(--max);margin:18px auto;padding:0 16px}
 
     /* header */
-    header{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 0}
+    header{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:var(--ui-gap);
+      padding:10px 0;
+    }
     .brand{display:flex;align-items:center;gap:12px}
-    .logo{width:56px;height:56px;border-radius:8px;background:linear-gradient(135deg,var(--accent),#0ea5a4);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700}
-    .logo img{height:46px;border-radius:4px;display:block}
+    .logo{
+      width:64px;height:64px;border-radius:12px;
+      background:linear-gradient(135deg,var(--accent),var(--accent-2));
+      display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;
+      box-shadow: var(--shadow-1);
+      transition:transform .32s cubic-bezier(.2,.9,.2,1), box-shadow .32s;
+      flex:0 0 64px;
+      overflow:hidden;
+    }
+    .logo img{height:48px;border-radius:6px;display:block}
+    .logo:focus, .logo:hover{transform:translateY(-4px) scale(1.03); box-shadow: var(--shadow-2);}
+
     .titles{line-height:1}
-    .titles h1{font-size:18px;margin:0}
-    .titles p{margin:2px 0 0 0;color:var(--muted);font-size:13px}
+    .titles h1{
+      font-family:'Playfair Display', serif;
+      font-size:18px;margin:0;color:#062733;
+      letter-spacing: -0.2px;
+    }
+    .titles p{margin:4px 0 0 0;color:var(--muted);font-size:13px}
 
     /* actions */
     .actions{display:flex;gap:10px;align-items:center}
-    .search{min-width:220px;flex:1}
-    .search input{width:100%;padding:10px 14px;border-radius:22px;border:1px solid #e6e6e6}
-    .btn{display:inline-block;padding:9px 14px;border-radius:20px;text-decoration:none;font-size:14px;background:var(--accent);color:#fff}
+    .search{min-width:220px;flex:1;display:flex;align-items:center}
+    .search input{
+      width:100%;
+      padding:10px 14px;border-radius:999px;border:1px solid #e6e6e6;
+      background:linear-gradient(180deg,#fff,#fbfdff);
+      outline: none;
+      transition: box-shadow .18s, transform .18s;
+    }
+    .search input:focus{box-shadow:0 6px 18px rgba(11,114,133,0.12); transform:translateY(-1px)}
+    .search-toggle{display:none;align-items:center;gap:8px;cursor:pointer;padding:8px;border-radius:8px}
+
+    .btn{
+      display:inline-block;padding:9px 14px;border-radius:999px;text-decoration:none;font-size:14px;
+      background:linear-gradient(90deg,var(--accent),var(--accent-2));color:#fff;font-weight:600;
+      box-shadow:0 8px 20px rgba(11,114,133,0.12);
+      transition:transform .18s, box-shadow .18s;
+    }
+    .btn:hover{transform:translateY(-3px); box-shadow:0 12px 28px rgba(11,114,133,0.16)}
 
     /* nav */
-    nav{margin-top:8px;background:linear-gradient(90deg,var(--orange),#f5a623);border-radius:10px;padding:8px}
-    nav .inner{max-width:var(--max);margin:0 auto;padding:0 16px;display:flex;align-items:center;gap:12px;overflow:auto}
-    nav a{color:#fff;padding:8px 12px;border-radius:8px;text-decoration:none;font-weight:600}
-    nav a.active{background:rgba(255,255,255,0.15)}
+    nav{
+      margin-top:12px;
+      border-radius:14px;
+      padding:8px;
+      position:sticky;
+      top:14px;
+      z-index:40;
+      backdrop-filter: blur(6px);
+      background: linear-gradient(90deg,var(--orange),#f5a623);
+      transition: box-shadow .18s, transform .18s;
+    }
+    nav.scrolled{box-shadow:0 10px 30px rgba(0,0,0,0.08); transform:translateY(-2px)}
+    nav .inner{
+      max-width:var(--max);margin:0 auto;padding:0 6px;display:flex;align-items:center;gap:12px;overflow:auto;
+      scrollbar-width:none;-ms-overflow-style:none;
+    }
+    nav .inner::-webkit-scrollbar{display:none}
+    nav a{
+      color:#fff;padding:8px 12px;border-radius:10px;text-decoration:none;font-weight:700;
+      transition:transform .18s, background .18s, opacity .18s;
+      white-space:nowrap;
+      font-size:14px;
+      opacity:.95;
+    }
+    nav a:hover{transform:scale(1.05); background: rgba(255,255,255,0.22)}
+    nav a.active{background:rgba(255,255,255,0.18); box-shadow: 0 6px 18px rgba(0,0,0,0.06)}
 
     /* main */
-    main{margin-top:16px}
-    .hero{background:var(--card);padding:20px;border-radius:12px;border:1px solid #ececec;box-shadow:0 6px 18px rgba(2,6,23,0.04)}
-    .title{font-size:24px;margin:0 0 6px 0}
+    main{margin-top:18px}
+    .hero{
+      background:var(--card);padding:22px;border-radius:16px;border:1px solid #ececec;
+      box-shadow: var(--shadow-1);
+      transition: transform .28s, box-shadow .28s;
+    }
+    .title{font-size:26px;margin:0 0 8px 0; font-family:'Playfair Display', serif}
     .meta{color:var(--muted);font-size:14px;margin-bottom:12px}
-    .cta-row{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-bottom:12px}
-    .pill{background:#fff;border:1px solid #f0f0f0;padding:6px 10px;border-radius:999px;color:var(--muted);font-size:13px}
+    .cta-row{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:12px}
+    .pill{
+      background:var(--glass);border:1px solid rgba(0,0,0,0.03);padding:8px 12px;border-radius:999px;color:var(--muted);font-size:13px;
+      transition: transform .18s, background .18s, color .18s;
+      box-shadow: 0 6px 14px rgba(2,6,23,0.03);
+      font-weight:600;
+    }
+    .pill:hover{background:linear-gradient(90deg,var(--accent),var(--accent-2)); color:#fff; transform:translateY(-4px)}
+
+    .project-info{margin-top:12px;color:var(--muted);font-size:14px;padding:12px;background:#fbfcfd;border:1px solid #f0f6f6;border-radius:10px}
 
     /* sections */
     .sections{display:grid;grid-template-columns:1fr;gap:14px;margin-top:14px}
-    .card{background:var(--card);padding:16px;border-radius:12px;border:1px solid #ececec}
-    .card h2{margin:0 0 10px 0;font-size:16px}
-    .list{display:flex;flex-direction:column;gap:8px}
-    .item{display:flex;align-items:center;justify-content:space-between;padding:10px;border-radius:10px;background:linear-gradient(180deg,rgba(255,255,255,0.6),rgba(255,255,255,0.95));border:1px dashed rgba(7,17,36,0.03);text-decoration:none;color:inherit}
+    .card{
+      background:var(--card);padding:16px;border-radius:14px;border:1px solid #ececec;
+      transition: transform .28s, box-shadow .28s, opacity .4s;
+      box-shadow: 0 8px 20px rgba(2,6,23,0.04);
+    }
+    .card:hover{transform:translateY(-6px); box-shadow: var(--shadow-2)}
+    .card h2{margin:0 0 10px 0;font-size:18px}
+    .list{display:flex;flex-direction:column;gap:10px}
+    .item{
+      display:flex;align-items:center;justify-content:space-between;padding:12px;border-radius:12px;
+      background:linear-gradient(180deg,rgba(255,255,255,0.6),rgba(255,255,255,0.98));border:1px dashed rgba(7,17,36,0.03);
+      text-decoration:none;color:inherit;
+      transition: transform .18s, box-shadow .18s;
+    }
+    .item:hover{transform:translateX(6px); box-shadow:0 10px 24px rgba(2,6,23,0.06)}
     .left{display:flex;gap:12px;align-items:center}
-    .idx{width:44px;height:44px;border-radius:8px;background:var(--accent);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700}
+    .idx{width:48px;height:48px;border-radius:10px;background:linear-gradient(135deg,var(--accent),var(--accent-2));
+      display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800; font-size:16px}
     .desc{color:var(--muted);font-size:13px}
     .open{color:var(--accent);font-weight:700}
 
     /* news */
-    .news-list{display:flex;flex-direction:column;gap:10px}
-    .news-item{padding:12px;border-radius:8px;background:#fbfcfd;border:1px solid #f0f6f6}
-    .news-item time{display:block;color:var(--muted);font-size:13px;margin-bottom:6px}
-
-    .project-info{margin-top:12px;color:var(--muted);font-size:14px;padding:12px;background:#fbfcfd;border:1px solid #f0f6f6;border-radius:10px}
+    .news-list{display:flex;flex-direction:column;gap:12px}
+    .news-item{
+      padding:12px;border-radius:12px;background:#fbfcfd;border:1px solid #f0f6f6;
+      display:flex;flex-direction:column;gap:6px;
+      transition: transform .18s, box-shadow .18s;
+    }
+    .news-item:hover{transform:translateY(-6px); box-shadow:0 10px 24px rgba(2,6,23,0.05)}
+    .news-item time{display:block;color:var(--muted);font-size:13px}
 
     footer{margin:18px 0;color:var(--muted);font-size:13px;text-align:center}
 
+    /* fade-in helper classes */
+    .fade-in{opacity:0;transform:translateY(18px);transition:opacity .72s ease, transform .72s ease}
+    .fade-in.visible{opacity:1;transform:translateY(0)}
+
+    /* small screens */
     @media(min-width:880px){.sections{grid-template-columns:repeat(3,1fr)} .search{min-width:420px}}
-    @media(max-width:720px){.search{display:none}.titles h1{font-size:16px}.hero{padding:14px}}
+    @media(max-width:720px){
+      .search input{display:none}
+      .search .search-toggle{display:flex}
+      .titles h1{font-size:16px}
+      .hero{padding:14px}
+      .logo{width:56px;height:56px}
+      .idx{width:40px;height:40px;font-size:14px}
+      nav{top:10px}
+      .sections{grid-template-columns:1fr}
+    }
+
+    /* accessibility focus states */
+    a:focus, button:focus, .logo:focus {outline: 3px solid rgba(11,114,133,0.14); outline-offset:3px}
   </style>
 </head>
 <body>
   <div class="wrap">
     <header>
       <div class="brand">
-        <div class="logo" aria-hidden>
+        <div class="logo" tabindex="0" aria-hidden="true">
+          <!-- keep your existing logo file path -->
           <img src="/mnt/data/0815714e-70d8-460b-af63-ff934b67a82c.png" alt="HV">
         </div>
         <div class="titles">
@@ -82,13 +212,18 @@
         </div>
       </div>
 
-      <div class="actions">
-        <div class="search"><input placeholder="Tìm đề, từ khóa..."></div>
+      <div class="actions" role="search">
+        <div class="search" aria-label="Tìm đề">
+          <input id="searchInput" placeholder="Tìm đề, từ khóa..." aria-label="Tìm đề, từ khóa">
+          <button class="search-toggle" id="searchToggle" aria-label="Hiện tìm kiếm">
+            🔎
+          </button>
+        </div>
         <a class="btn" href="mailto:minhtuan11hg@gmail.com">Liên hệ</a>
       </div>
     </header>
 
-    <nav aria-label="chuyên mục">
+    <nav aria-label="chuyên mục" id="mainNav">
       <div class="inner">
         <a href="#home" class="nav-link active">Trang chủ</a>
         <a href="#docs" class="nav-link">Tài liệu</a>
@@ -99,7 +234,7 @@
 
     <main>
       <!-- HOME -->
-      <section id="home" class="hero" role="main">
+      <section id="home" class="hero fade-in" role="main">
         <h1 class="title">Tổng hợp đề ôn — Môn Ngữ Văn</h1>
         <div class="meta">Mục tiêu: tài liệu ôn thi vào 10 — Tỉnh Tuyên Quang.</div>
 
@@ -116,17 +251,17 @@
       </section>
 
       <!-- DOCS / TÀI LIỆU -->
-      <section id="docs" class="sections" aria-label="tài liệu">
-        <div class="card">
+      <section id="docs" class="sections" aria-label="tài liệu" style="margin-top:16px">
+        <div class="card fade-in">
           <h2>Phần A — Thơ 8 chữ (3 bài)</h2>
           <div class="list">
-            <a class="item" href="bai1.html"><div class="left"><div class="idx">1</div><div><strong>Bài 1 — Thơ 8 chữ</strong><div class="desc">Placeholder</div></div></div><div class="open">Mở</div></a>
-            <a class="item" href="bai2.html"><div class="left"><div class="idx">2</div><div><strong>Bài 2 — Thơ 8 chữ</strong><div class="desc">Placeholder</div></div></div><div class="open">Mở</div></a>
-            <a class="item" href="bai3.html"><div class="left"><div class="idx">3</div><div><strong>Bài 3 — Thơ 8 chữ</strong><div class="desc">Placeholder</div></div></div><div class="open">Mở</div></a>
+            <a class="item" href="bai1.html"><div class="left"><div class="idx">1</div><div><strong>Bài 1 — Thơ 8 chữ</strong><div class="desc">Gợi ý: phân tích nhan đề, nghệ thuật</div></div></div><div class="open">Mở</div></a>
+            <a class="item" href="bai2.html"><div class="left"><div class="idx">2</div><div><strong>Bài 2 — Thơ 8 chữ</strong><div class="desc">Gợi ý: cách dùng hình ảnh</div></div></div><div class="open">Mở</div></a>
+            <a class="item" href="bai3.html"><div class="left"><div class="idx">3</div><div><strong>Bài 3 — Thơ 8 chữ</strong><div class="desc">Gợi ý: giải thích câu thơ</div></div></div><div class="open">Mở</div></a>
           </div>
         </div>
 
-        <div class="card">
+        <div class="card fade-in">
           <h2>Phần B — Thơ song thất (3 bài)</h2>
           <div class="list">
             <a class="item" href="bai4.html"><div class="left"><div class="idx">4</div><div><strong>Bài 4 — Song thất</strong><div class="desc">Placeholder</div></div></div><div class="open">Mở</div></a>
@@ -135,7 +270,7 @@
           </div>
         </div>
 
-        <div class="card">
+        <div class="card fade-in">
           <h2>Phần C — 6 đề thơ hay</h2>
           <div class="list">
             <a class="item" href="bai7.html"><div class="left"><div class="idx">7</div><div><strong>Bài 7</strong><div class="desc">Placeholder</div></div></div><div class="open">Mở</div></a>
@@ -150,26 +285,19 @@
 
       <!-- NEWS / TIN TỨC -->
       <section id="news" style="margin-top:16px">
-        <div class="card">
+        <div class="card fade-in">
           <h2>Tin tức & Cập nhật</h2>
           <div class="news-list">
             <article class="news-item">
               <time datetime="2025-11-25">25/11/2025</time>
               <strong>Cập nhật: Thêm 3 đề thơ 8 chữ</strong>
-              <p class="desc">hoàn chỉnh.</p>
-            </article>
-          <div class="news-list">
-            <article class="news-item">
-              <time datetime="2025-11-25">25/11/2025</time>
-              <strong>Cập nhật: Thêm 6 đề thơ 8 chữ</strong>
-              <p class="desc">hoàn chỉnh.</p>
+              <p class="desc">Hoàn chỉnh tài liệu, đã upload file PDF.</p>
             </article>
 
-          <div class="news-list">
             <article class="news-item">
               <time datetime="2025-11-25">25/11/2025</time>
-              <strong>Cập nhật: Thêm 3 đề thơ song thất</strong>
-              <p class="desc">hoàn chỉnh.</p>
+              <strong>Cập nhật: Thêm 6 đề văn hay</strong>
+              <p class="desc">Đã biên soạn và chấm thử, chuẩn bị đăng tải.</p>
             </article>
 
             <article class="news-item">
@@ -183,9 +311,10 @@
 
       <!-- CONTACT anchor -->
       <section id="contact" style="margin-top:16px">
-        <div class="card">
+        <div class="card fade-in">
           <h2>Liên hệ</h2>
           <p class="desc">Mail liên hệ dự án: <a href="mailto:minhtuan11hg@gmail.com">minhtuan11hg@gmail.com</a></p>
+          <p class="desc">Muốn upload đề hay sửa nội dung? Gửi file PDF qua mail hoặc kéo vào folder dự án trên drive.</p>
         </div>
       </section>
     </main>
@@ -196,7 +325,7 @@
   </div>
 
   <script>
-    // Basic nav active update on scroll + click
+    // NAV: click -> active
     document.querySelectorAll('nav .inner a').forEach(a=>{
       a.addEventListener('click', e=>{
         const href = a.getAttribute('href');
@@ -207,7 +336,7 @@
       });
     });
 
-    // IntersectionObserver to change active on scroll
+    // IntersectionObserver: highlight nav + fade-in elements
     const sections = Array.from(document.querySelectorAll('main > section'));
     const obsOptions = { root: null, rootMargin: '0px', threshold: 0.45 };
     const observer = new IntersectionObserver((entries)=>{
@@ -221,9 +350,62 @@
       });
     }, obsOptions);
     sections.forEach(sec => observer.observe(sec));
+
+    // Fade-in on scroll for cards and other elements
+    const faders = document.querySelectorAll('.fade-in');
+    const appearOptions = { threshold: 0.18, rootMargin: "0px 0px -60px 0px" };
+    const appearOnScroll = new IntersectionObserver((entries, obs)=>{
+      entries.forEach(entry=>{
+        if(!entry.isIntersecting) return;
+        entry.target.classList.add('visible');
+        obs.unobserve(entry.target);
+      });
+    }, appearOptions);
+    faders.forEach(f=>appearOnScroll.observe(f));
+
+    // Sticky nav shadow toggle
+    const navEl = document.getElementById('mainNav');
+    const navTrigger = 30;
+    window.addEventListener('scroll', ()=>{
+      if(window.scrollY > navTrigger) navEl.classList.add('scrolled');
+      else navEl.classList.remove('scrolled');
+    });
+
+    // Mobile search toggle
+    const searchToggle = document.getElementById('searchToggle');
+    const searchInput = document.getElementById('searchInput');
+    let searchOpen = false;
+    searchToggle && searchToggle.addEventListener('click', ()=>{
+      searchOpen = !searchOpen;
+      if(window.innerWidth <= 720){
+        searchInput.style.display = searchOpen ? 'block' : 'none';
+        if(searchOpen){ searchInput.focus(); }
+      }
+    });
+
+    // Close mobile search on resize to desktop
+    window.addEventListener('resize', ()=>{
+      if(window.innerWidth > 720){
+        searchInput.style.display = 'block';
+        searchOpen = false;
+      } else {
+        if(!searchOpen) searchInput.style.display = 'none';
+      }
+    });
+
+    // Init proper search visibility on load
+    if(window.innerWidth <= 720){
+      searchInput.style.display = 'none';
+    }
+
+    // Optional: keyboard nav for quick anchors (press d -> docs, n -> news, c -> contact)
+    window.addEventListener('keydown', (e)=>{
+      if(document.activeElement && (document.activeElement.tagName === 'INPUT' || document.activeElement.tagName === 'TEXTAREA')) return;
+      const key = e.key.toLowerCase();
+      if(key === 'd') location.hash = '#docs';
+      if(key === 'n') location.hash = '#news';
+      if(key === 'c') location.hash = '#contact';
+    });
   </script>
 </body>
 </html>
->
-
-
