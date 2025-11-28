@@ -6,8 +6,6 @@
   <title>Kho Đề Ôn Vào 10 — Học Văn cùng Cô Oanh</title>
   <meta name="description" content="Kho đề ôn thi vào 10 Tỉnh Tuyên Quang - Nguyễn Minh Tuấn, Vũ Tiến Phúc, Ngô Bảo Khánh, Hà Giang, GV Vũ Thị Kiều Oanh">
   <meta name="theme-color" content="#0b7285" />
-
-  <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
 
   <style>
@@ -18,7 +16,6 @@
       --accent-2:#0ea5a4;
       --orange:#f39c12;
       --muted:#6b7280;
-      --muted-2:#8b94a0;
       --glass: rgba(255,255,255,0.6);
       --max:1100px;
       --radius:12px;
@@ -26,11 +23,12 @@
       --shadow-1: 0 6px 18px rgba(2,6,23,0.06);
       --shadow-2: 0 12px 28px rgba(2,6,23,0.09);
       --ui-gap:12px;
+      --nav-height:64px; /* used for scroll-padding */
     }
 
-    /* reset & base */
+    /* base */
     *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
+    html{scroll-behavior:smooth; scroll-padding-top: calc(var(--nav-height) + 24px);}
     body{
       margin:0;
       font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
@@ -52,7 +50,7 @@
       gap:var(--ui-gap);
       padding:10px 0;
     }
-    .brand{display:flex;align-items:center;gap:12px}
+    .brand{display:flex;align-items:center;gap:12px;min-width:0}
     .logo{
       width:64px;height:64px;border-radius:12px;
       background:linear-gradient(135deg,var(--accent),var(--accent-2));
@@ -65,17 +63,20 @@
     .logo img{height:48px;border-radius:6px;display:block}
     .logo:focus, .logo:hover{transform:translateY(-4px) scale(1.03); box-shadow: var(--shadow-2);}
 
-    .titles{line-height:1}
+    .titles{line-height:1; flex:1 1 auto; min-width:0}
     .titles h1{
       font-family:'Playfair Display', serif;
       font-size:18px;margin:0;color:#062733;
       letter-spacing: -0.2px;
+      white-space:normal;
+      word-break:break-word;
+      overflow-wrap:break-word;
     }
     .titles p{margin:4px 0 0 0;color:var(--muted);font-size:13px}
 
     /* actions */
-    .actions{display:flex;gap:10px;align-items:center}
-    .search{min-width:220px;flex:1;display:flex;align-items:center}
+    .actions{display:flex;gap:10px;align-items:center;flex:0 0 auto}
+    .search{min-width:220px;flex:1;display:flex;align-items:center;max-width:420px}
     .search input{
       width:100%;
       padding:10px 14px;border-radius:999px;border:1px solid #e6e6e6;
@@ -84,7 +85,7 @@
       transition: box-shadow .18s, transform .18s;
     }
     .search input:focus{box-shadow:0 6px 18px rgba(11,114,133,0.12); transform:translateY(-1px)}
-    .search-toggle{display:none;align-items:center;gap:8px;cursor:pointer;padding:8px;border-radius:8px}
+    .search-toggle{display:none;align-items:center;gap:8px;cursor:pointer;padding:8px;border-radius:8px;background:transparent;border:none;font-size:18px}
 
     .btn{
       display:inline-block;padding:9px 14px;border-radius:999px;text-decoration:none;font-size:14px;
@@ -156,8 +157,9 @@
       display:flex;align-items:center;justify-content:space-between;padding:12px;border-radius:12px;
       background:linear-gradient(180deg,rgba(255,255,255,0.6),rgba(255,255,255,0.98));border:1px dashed rgba(7,17,36,0.03);
       text-decoration:none;color:inherit;
-      transition: transform .18s, box-shadow .18s;
+      transition: transform .18s, box-shadow .18s, opacity .24s, height .2s ease, margin .2s ease, padding .2s ease;
     }
+    .item.hidden { opacity:0; transform:translateY(8px); height:0; padding:0 12px; margin:0; overflow:hidden; border:none; }
     .item:hover{transform:translateX(6px); box-shadow:0 10px 24px rgba(2,6,23,0.06)}
     .left{display:flex;gap:12px;align-items:center}
     .idx{width:48px;height:48px;border-radius:10px;background:linear-gradient(135deg,var(--accent),var(--accent-2));
@@ -177,24 +179,34 @@
 
     footer{margin:18px 0;color:var(--muted);font-size:13px;text-align:center}
 
-    /* fade-in helper classes */
+    /* fade-in */
     .fade-in{opacity:0;transform:translateY(18px);transition:opacity .72s ease, transform .72s ease}
     .fade-in.visible{opacity:1;transform:translateY(0)}
 
-    /* small screens */
+    /* responsive fixes */
     @media(min-width:880px){.sections{grid-template-columns:repeat(3,1fr)} .search{min-width:420px}}
     @media(max-width:720px){
-      .search input{display:none}
-      .search .search-toggle{display:flex}
+      header{flex-direction:column;align-items:stretch;gap:8px;padding:10px 0}
+      .brand{padding:6px 8px}
       .titles h1{font-size:16px}
-      .hero{padding:14px}
       .logo{width:56px;height:56px}
+      .logo img{height:42px}
+      .search{max-width:unset; padding:0 8px}
+      .search input{display:none}
+      .search-toggle{display:flex}
+      .cta-row{gap:8px;padding:0 8px}
+      .pill{padding:6px 10px;font-size:13px}
       .idx{width:40px;height:40px;font-size:14px}
       nav{top:10px}
       .sections{grid-template-columns:1fr}
+      .hero, .card{padding:14px}
+    }
+    @media(max-width:420px){
+      nav{position:relative; top:0}
+      .titles h1 { font-size:15px; -webkit-line-clamp:2; display:-webkit-box; -webkit-box-orient:vertical; overflow:hidden; }
     }
 
-    /* accessibility focus states */
+    /* accessibility focus */
     a:focus, button:focus, .logo:focus {outline: 3px solid rgba(11,114,133,0.14); outline-offset:3px}
   </style>
 </head>
@@ -203,23 +215,20 @@
     <header>
       <div class="brand">
         <div class="logo" tabindex="0" aria-hidden="true">
-          <!-- keep your existing logo file path -->
           <img src="/mnt/data/0815714e-70d8-460b-af63-ff934b67a82c.png" alt="HV">
         </div>
         <div class="titles">
           <h1>Kho Đề Ôn Vào 10 — Học Văn cùng Cô Oanh</h1>
-          <p>Nguyễn Minh Tuấn · Vũ Tiến Phúc · GV Vũ Thị Kiều Oanh</p>
+          <p>Nguyễn Minh Tuấn · Vũ Tiến Phúc · Ngô Bảo Khánh · Hà Giang · GV Vũ Thị Kiều Oanh</p>
         </div>
       </div>
 
-      <div class="actions" role="search">
-        <div class="search" aria-label="Tìm đề">
+      <div class="actions" role="search" aria-label="Tìm kiếm tài liệu">
+        <div class="search" aria-hidden="false">
           <input id="searchInput" placeholder="Tìm đề, từ khóa..." aria-label="Tìm đề, từ khóa">
-          <button class="search-toggle" id="searchToggle" aria-label="Hiện tìm kiếm">
-            🔎
-          </button>
+          <button class="search-toggle" id="searchToggle" aria-label="Hiện tìm kiếm">🔎</button>
         </div>
-        <a class="btn" href="mailto:minhtuan11hg@gmail.com">Liên hệ</a>
+        <a class="btn" href="mailto:minhtuan11hg@gmail.com" aria-label="Liên hệ">Liên hệ</a>
       </div>
     </header>
 
@@ -233,7 +242,7 @@
     </nav>
 
     <main>
-      <!-- HOME -->
+      <!-- HERO -->
       <section id="home" class="hero fade-in" role="main">
         <h1 class="title">Tổng hợp đề ôn — Môn Ngữ Văn</h1>
         <div class="meta">Mục tiêu: tài liệu ôn thi vào 10 — Tỉnh Tuyên Quang.</div>
@@ -241,63 +250,118 @@
         <div class="cta-row">
           <a class="pill" href="#docs">3 bài — Thơ 8 chữ</a>
           <a class="pill" href="#docs">3 bài — Song thất</a>
-          <a class="pill" href="#docs">6 đề văn hay</a>
+          <a class="pill" href="#docs">6 đề thơ hay</a>
         </div>
 
         <div class="project-info" aria-hidden>
-          Dự án: <strong>Nguyễn Minh Tuấn</strong> · <strong>Vũ Tiến Phúc</strong> · Chủ trì (GV): <strong>Vũ Thị Kiều Oanh</strong><br>
-          Chủ đề: Kho đề ôn thi vào 10 — Tuyên Quang. Liên hệ: <a href="mailto:minhtuan11hg@gmail.com">minhtuan11hg@gmail.com</a>
+          Dự án: <strong>Nguyễn Minh Tuấn</strong> · <strong>Vũ Tiến Phúc</strong> · <strong>Ngô Bảo Khánh</strong> · <strong>Hà Giang</strong><br>
+          Chủ trì (GV): <strong>Vũ Thị Kiều Oanh</strong><br>
+          Liên hệ: <a href="mailto:minhtuan11hg@gmail.com">minhtuan11hg@gmail.com</a>
         </div>
       </section>
 
-      <!-- DOCS / TÀI LIỆU -->
+      <!-- DOCS / LIST -->
       <section id="docs" class="sections" aria-label="tài liệu" style="margin-top:16px">
         <div class="card fade-in">
-          <h2>Phần A — Thơ 8 chữ (3 bài)</h2>
-          <div class="list">
-            <a class="item" href="bai1.html"><div class="left"><div class="idx">1</div><div><strong>Bài 1 — Thơ 8 chữ</strong><div class="desc">Gợi ý: phân tích nhan đề, nghệ thuật</div></div></div><div class="open">Mở</div></a>
-            <a class="item" href="bai2.html"><div class="left"><div class="idx">2</div><div><strong>Bài 2 — Thơ 8 chữ</strong><div class="desc">Gợi ý: cách dùng hình ảnh</div></div></div><div class="open">Mở</div></a>
-            <a class="item" href="bai3.html"><div class="left"><div class="idx">3</div><div><strong>Bài 3 — Thơ 8 chữ</strong><div class="desc">Gợi ý: giải thích câu thơ</div></div></div><div class="open">Mở</div></a>
+          <h2>Tìm kiếm & lọc nhanh</h2>
+          <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:8px">
+            <input id="filterKeyword" type="text" placeholder="Nhập từ khóa (ví dụ: nhan đề, tác giả)..." style="padding:8px;border-radius:8px;border:1px solid #e3e3e3;flex:1;min-width:160px">
+            <select id="filterType" style="padding:8px;border-radius:8px;border:1px solid #e3e3e3">
+              <option value="all">Tất cả loại đề</option>
+              <option value="tho8chu">Thơ 8 chữ</option>
+              <option value="songthat">Thơ song thất</option>
+              <option value="vanhay">Thơ hay / Văn hay</option>
+            </select>
+            <button id="btnClear" class="btn" style="padding:8px 12px;border-radius:8px">Xóa</button>
           </div>
         </div>
 
-        <div class="card fade-in">
-          <h2>Phần B — Thơ song thất (3 bài)</h2>
-          <div class="list">
-            <a class="item" href="bai4.html"><div class="left"><div class="idx">4</div><div><strong>Bài 4 — Song thất</strong><div class="desc">Placeholder</div></div></div><div class="open">Mở</div></a>
-            <a class="item" href="bai5.html"><div class="left"><div class="idx">5</div><div><strong>Bài 5 — Song thất</strong><div class="desc">Placeholder</div></div></div><div class="open">Mở</div></a>
-            <a class="item" href="bai6.html"><div class="left"><div class="idx">6</div><div><strong>Bài 6 — Song thất</strong><div class="desc">Placeholder</div></div></div><div class="open">Mở</div></a>
-          </div>
-        </div>
+        <div class="card fade-in" id="docsList">
+          <h2>Danh sách đề</h2>
+          <div class="list" style="margin-top:8px">
 
-        <div class="card fade-in">
-          <h2>Phần C — 6 đề thơ hay</h2>
-          <div class="list">
-            <a class="item" href="bai7.html"><div class="left"><div class="idx">7</div><div><strong>Bài 7</strong><div class="desc">Placeholder</div></div></div><div class="open">Mở</div></a>
-            <a class="item" href="bai8.html"><div class="left"><div class="idx">8</div><div><strong>Bài 8</strong><div class="desc">Placeholder</div></div></div><div class="open">Mở</div></a>
-            <a class="item" href="bai9.html"><div class="left"><div class="idx">9</div><div><strong>Bài 9</strong><div class="desc">Placeholder</div></div></div><div class="open">Mở</div></a>
-            <a class="item" href="bai10.html"><div class="left"><div class="idx">10</div><div><strong>Bài 10</strong><div class="desc">Placeholder</div></div></div><div class="open">Mở</div></a>
-            <a class="item" href="bai11.html"><div class="left"><div class="idx">11</div><div><strong>Bài 11</strong><div class="desc">Placeholder</div></div></div><div class="open">Mở</div></a>
-            <a class="item" href="bai12.html"><div class="left"><div class="idx">12</div><div><strong>Bài 12</strong><div class="desc">Placeholder</div></div></div><div class="open">Mở</div></a>
+            <!-- Thơ 8 chữ -->
+            <a class="item" data-type="tho8chu" href="bai1.html">
+              <div class="left"><div class="idx">1</div><div><strong>Bài 1 — Thơ 8 chữ</strong><div class="desc"></div></div></div>
+              <div class="open">Mở</div>
+            </a>
+
+            <a class="item" data-type="tho8chu" href="bai2.html">
+              <div class="left"><div class="idx">2</div><div><strong>Bài 2 — Thơ 8 chữ</strong><div class="desc"></div></div></div>
+              <div class="open">Mở</div>
+            </a>
+
+            <a class="item" data-type="tho8chu" href="bai3.html">
+              <div class="left"><div class="idx">3</div><div><strong>Bài 3 — Thơ 8 chữ</strong><div class="desc"></div></div></div>
+              <div class="open">Mở</div>
+            </a>
+
+            <!-- Song thất -->
+            <a class="item" data-type="songthat" href="bai4.html">
+              <div class="left"><div class="idx">4</div><div><strong>Bài 4 — Song thất</strong><div class="desc"></div></div></div>
+              <div class="open">Mở</div>
+            </a>
+
+            <a class="item" data-type="songthat" href="bai5.html">
+              <div class="left"><div class="idx">5</div><div><strong>Bài 5 — Song thất</strong><div class="desc"></div></div></div>
+              <div class="open">Mở</div>
+            </a>
+
+            <a class="item" data-type="songthat" href="bai6.html">
+              <div class="left"><div class="idx">6</div><div><strong>Bài 6 — Song thất</strong><div class="desc"></div></div></div>
+              <div class="open">Mở</div>
+            </a>
+
+            <!-- Thơ/Văn hay (7..12: restore full set of 6 items) -->
+            <a class="item" data-type="vanhay" href="bai7.html">
+              <div class="left"><div class="idx">7</div><div><strong>Bài 7 — Văn hay</strong><div class="desc"></div></div></div>
+              <div class="open">Mở</div>
+            </a>
+
+            <a class="item" data-type="vanhay" href="bai8.html">
+              <div class="left"><div class="idx">8</div><div><strong>Bài 8 — Văn hay</strong><div class="desc"></div></div></div>
+              <div class="open">Mở</div>
+            </a>
+
+            <a class="item" data-type="vanhay" href="bai9.html">
+              <div class="left"><div class="idx">9</div><div><strong>Bài 9 — Văn hay</strong><div class="desc"></div></div></div>
+              <div class="open">Mở</div>
+            </a>
+
+            <a class="item" data-type="vanhay" href="bai10.html">
+              <div class="left"><div class="idx">10</div><div><strong>Bài 10 — Văn hay</strong><div class="desc"></div></div></div>
+              <div class="open">Mở</div>
+            </a>
+
+            <a class="item" data-type="vanhay" href="bai11.html">
+              <div class="left"><div class="idx">11</div><div><strong>Bài 11 — Văn hay</strong><div class="desc"></div></div></div>
+              <div class="open">Mở</div>
+            </a>
+
+            <a class="item" data-type="vanhay" href="bai12.html">
+              <div class="left"><div class="idx">12</div><div><strong>Bài 12 — Văn hay</strong><div class="desc"></div></div></div>
+              <div class="open">Mở</div>
+            </a>
+
           </div>
         </div>
       </section>
 
-      <!-- NEWS / TIN TỨC -->
+      <!-- NEWS -->
       <section id="news" style="margin-top:16px">
         <div class="card fade-in">
           <h2>Tin tức & Cập nhật</h2>
-          <div class="news-list">
+          <div class="news-list" style="margin-top:8px">
             <article class="news-item">
               <time datetime="2025-11-25">25/11/2025</time>
               <strong>Cập nhật: Thêm 3 đề thơ 8 chữ</strong>
-              <p class="desc">Hoàn chỉnh tài liệu, đã upload file PDF.</p>
+              <p class="desc">Hoàn chỉnh tài liệu.</p>
             </article>
 
             <article class="news-item">
               <time datetime="2025-11-25">25/11/2025</time>
-              <strong>Cập nhật: Thêm 6 đề văn hay</strong>
-              <p class="desc">Đã biên soạn và chấm thử, chuẩn bị đăng tải.</p>
+              <strong>Cập nhật: Thêm 6 đề thơ hay</strong>
+              <p class="desc">Đãđăng tải.</p>
             </article>
 
             <article class="news-item">
@@ -309,12 +373,11 @@
         </div>
       </section>
 
-      <!-- CONTACT anchor -->
+      <!-- CONTACT -->
       <section id="contact" style="margin-top:16px">
         <div class="card fade-in">
           <h2>Liên hệ</h2>
           <p class="desc">Mail liên hệ dự án: <a href="mailto:minhtuan11hg@gmail.com">minhtuan11hg@gmail.com</a></p>
-          <p class="desc">Muốn upload đề hay sửa nội dung? Gửi file PDF qua mail hoặc kéo vào folder dự án trên drive.</p>
         </div>
       </section>
     </main>
@@ -325,7 +388,7 @@
   </div>
 
   <script>
-    // NAV: click -> active
+    // NAV: set active on click
     document.querySelectorAll('nav .inner a').forEach(a=>{
       a.addEventListener('click', e=>{
         const href = a.getAttribute('href');
@@ -336,7 +399,7 @@
       });
     });
 
-    // IntersectionObserver: highlight nav + fade-in elements
+    // IntersectionObserver: highlight nav on scroll
     const sections = Array.from(document.querySelectorAll('main > section'));
     const obsOptions = { root: null, rootMargin: '0px', threshold: 0.45 };
     const observer = new IntersectionObserver((entries)=>{
@@ -351,7 +414,7 @@
     }, obsOptions);
     sections.forEach(sec => observer.observe(sec));
 
-    // Fade-in on scroll for cards and other elements
+    // Fade-in on scroll
     const faders = document.querySelectorAll('.fade-in');
     const appearOptions = { threshold: 0.18, rootMargin: "0px 0px -60px 0px" };
     const appearOnScroll = new IntersectionObserver((entries, obs)=>{
@@ -375,30 +438,60 @@
     const searchToggle = document.getElementById('searchToggle');
     const searchInput = document.getElementById('searchInput');
     let searchOpen = false;
-    searchToggle && searchToggle.addEventListener('click', ()=>{
-      searchOpen = !searchOpen;
-      if(window.innerWidth <= 720){
-        searchInput.style.display = searchOpen ? 'block' : 'none';
-        if(searchOpen){ searchInput.focus(); }
-      }
-    });
-
-    // Close mobile search on resize to desktop
+    if(searchToggle){
+      searchToggle.addEventListener('click', ()=>{
+        searchOpen = !searchOpen;
+        if(window.innerWidth <= 720){
+          searchInput.style.display = searchOpen ? 'block' : 'none';
+          if(searchOpen) searchInput.focus();
+        }
+      });
+    }
     window.addEventListener('resize', ()=>{
       if(window.innerWidth > 720){
-        searchInput.style.display = 'block';
+        if (searchInput) searchInput.style.display = 'block';
         searchOpen = false;
       } else {
-        if(!searchOpen) searchInput.style.display = 'none';
+        if(!searchOpen && searchInput) searchInput.style.display = 'none';
       }
     });
+    if(window.innerWidth <= 720 && searchInput) searchInput.style.display = 'none';
 
-    // Init proper search visibility on load
-    if(window.innerWidth <= 720){
-      searchInput.style.display = 'none';
+    // LIVE FILTER: keyword + type
+    const filterKeyword = document.getElementById('filterKeyword');
+    const filterType = document.getElementById('filterType');
+    const items = Array.from(document.querySelectorAll('#docsList .item'));
+
+    function filterDocs() {
+      const keyword = (filterKeyword && filterKeyword.value || '').toLowerCase().trim();
+      const type = (filterType && filterType.value) || 'all';
+      items.forEach(item => {
+        const text = item.innerText.toLowerCase();
+        const itemType = item.getAttribute('data-type') || 'all';
+        const matchesKeyword = keyword === '' || text.includes(keyword);
+        const matchesType = type === 'all' || itemType === type;
+        if(matchesKeyword && matchesType){
+          item.classList.remove('hidden');
+          item.style.display = '';
+        } else {
+          item.classList.add('hidden');
+          item.style.display = 'none';
+        }
+      });
     }
 
-    // Optional: keyboard nav for quick anchors (press d -> docs, n -> news, c -> contact)
+    if(filterKeyword) filterKeyword.addEventListener('input', filterDocs);
+    if(filterType) filterType.addEventListener('change', filterDocs);
+    const btnClear = document.getElementById('btnClear');
+    if(btnClear){
+      btnClear.addEventListener('click', ()=>{
+        if(filterKeyword) filterKeyword.value = '';
+        if(filterType) filterType.value = 'all';
+        filterDocs();
+      });
+    }
+
+    // keyboard anchors for quick nav (d, n, c)
     window.addEventListener('keydown', (e)=>{
       if(document.activeElement && (document.activeElement.tagName === 'INPUT' || document.activeElement.tagName === 'TEXTAREA')) return;
       const key = e.key.toLowerCase();
@@ -409,4 +502,3 @@
   </script>
 </body>
 </html>
-
