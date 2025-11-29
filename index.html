@@ -23,7 +23,7 @@
       --shadow-1: 0 6px 18px rgba(2,6,23,0.06);
       --shadow-2: 0 12px 28px rgba(2,6,23,0.09);
       --ui-gap:12px;
-      --nav-height:64px; /* used for scroll-padding */
+      --nav-height:64px;
     }
 
     /* base */
@@ -141,8 +141,6 @@
     }
     .pill:hover{background:linear-gradient(90deg,var(--accent),var(--accent-2)); color:#fff; transform:translateY(-4px)}
 
-    .project-info{margin-top:12px;color:var(--muted);font-size:14px;padding:12px;background:#fbfcfd;border:1px solid #f0f6f6;border-radius:10px}
-
     /* sections */
     .sections{display:grid;grid-template-columns:1fr;gap:14px;margin-top:14px}
     .card{
@@ -167,23 +165,58 @@
     .desc{color:var(--muted);font-size:13px}
     .open{color:var(--accent);font-weight:700}
 
-    /* news */
-    .news-list{display:flex;flex-direction:column;gap:12px}
-    .news-item{
-      padding:12px;border-radius:12px;background:#fbfcfd;border:1px solid #f0f6f6;
-      display:flex;flex-direction:column;gap:6px;
-      transition: transform .18s, box-shadow .18s;
+    /* project card (moved to bottom) */
+    .project-card {
+      margin-top:28px;
+      display:flex;
+      justify-content:center;
     }
-    .news-item:hover{transform:translateY(-6px); box-shadow:0 10px 24px rgba(2,6,23,0.05)}
-    .news-item time{display:block;color:var(--muted);font-size:13px}
+    .project-card .inner {
+      width:100%;
+      max-width:1000px;
+      background: linear-gradient(180deg, rgba(14,165,164,0.04), rgba(255,255,255,0.98));
+      border-radius:14px;
+      padding:16px;
+      display:flex;
+      gap:16px;
+      align-items:center;
+      box-shadow: 0 12px 30px rgba(2,6,23,0.06);
+      border:1px solid rgba(11,114,133,0.06);
+    }
+    .project-card .thumb{
+      flex:0 0 88px;
+      height:88px;
+      border-radius:12px;
+      overflow:hidden;
+      box-shadow:0 8px 18px rgba(2,6,23,0.05);
+      border:4px solid rgba(255,255,255,0.6);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background:linear-gradient(135deg,var(--accent),var(--accent-2));
+    }
+    .project-card .thumb img{width:100%; height:100%; object-fit:cover; display:block}
 
-    footer{margin:18px 0;color:var(--muted);font-size:13px;text-align:center}
+    .project-card .content { flex:1; min-width:0 }
+    .project-card h3 { margin:0 0 6px 0; font-size:16px; color:#062733 }
+    .project-card p { margin:0; color:var(--muted); font-size:14px }
+    .project-card .names { font-weight:700; color:#09323a; margin-bottom:6px; display:block; font-size:15px }
+    .project-card .meta-row { display:flex; gap:12px; align-items:center; margin-top:10px; flex-wrap:wrap }
+    .project-card .mail-btn {
+      display:inline-flex; align-items:center; gap:8px;
+      padding:8px 12px; border-radius:10px; background:linear-gradient(90deg,var(--accent),var(--accent-2));
+      color:#fff; font-weight:700; box-shadow: 0 8px 20px rgba(11,114,133,0.12);
+      text-decoration:none;
+    }
+
+    /* footer smaller */
+    footer{margin:28px 0;color:var(--muted);font-size:13px;text-align:center}
 
     /* fade-in */
     .fade-in{opacity:0;transform:translateY(18px);transition:opacity .72s ease, transform .72s ease}
     .fade-in.visible{opacity:1;transform:translateY(0)}
 
-    /* responsive fixes */
+    /* responsive */
     @media(min-width:880px){.sections{grid-template-columns:repeat(3,1fr)} .search{min-width:420px}}
     @media(max-width:720px){
       header{flex-direction:column;align-items:stretch;gap:8px;padding:10px 0}
@@ -200,14 +233,41 @@
       nav{top:10px}
       .sections{grid-template-columns:1fr}
       .hero, .card{padding:14px}
+      .project-card .inner{flex-direction:column; align-items:flex-start; gap:12px}
+      .project-card .thumb{width:72px;height:72px}
     }
     @media(max-width:420px){
       nav{position:relative; top:0}
       .titles h1 { font-size:15px; -webkit-line-clamp:2; display:-webkit-box; -webkit-box-orient:vertical; overflow:hidden; }
     }
 
-    /* accessibility focus */
+    /* accessibility */
     a:focus, button:focus, .logo:focus {outline: 3px solid rgba(11,114,133,0.14); outline-offset:3px}
+
+    /* --- Floating report button (small, accessible) --- */
+    .floating-btn {
+      position: fixed;
+      bottom: 18px;
+      right: 18px;
+      background: linear-gradient(90deg,var(--accent),var(--accent-2));
+      color: #fff;
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 700;
+      text-decoration: none;
+      box-shadow: 0 8px 22px rgba(11,114,133,0.18);
+      transition: transform .18s, box-shadow .18s, opacity .18s;
+      z-index: 9999;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .floating-btn:hover { transform: translateY(-4px); box-shadow: 0 14px 36px rgba(11,114,133,0.22); }
+    .floating-btn:active { transform: translateY(-1px); }
+    @media(max-width:420px){
+      .floating-btn { bottom: 14px; right: 12px; padding: 8px 10px; font-size:12px; }
+    }
   </style>
 </head>
 <body>
@@ -215,7 +275,7 @@
     <header>
       <div class="brand">
         <div class="logo" tabindex="0" aria-hidden="true">
-          <img src="anhnhom.jpg" alt="HV">
+          <img src="anhnhom.jpg" alt="Ảnh nhóm">
         </div>
         <div class="titles">
           <h1>Kho Đề Ôn Vào 10 — Học Văn cùng Cô Oanh</h1>
@@ -252,12 +312,6 @@
           <a class="pill" href="#docs">3 đề — Song thất</a>
           <a class="pill" href="#docs">6 đề thơ hay</a>
         </div>
-
-        <div class="project-info" aria-hidden>
-          Dự án: <strong>Nguyễn Minh Tuấn</strong> · <strong>Vũ Tiến Phúc</strong> · <strong>Ngô Bảo Khánh</strong> · <strong>Hà Giang</strong><br>
-          Chủ trì (GV): <strong>Vũ Thị Kiều Oanh</strong><br>
-          Liên hệ: <a href="mailto:minhtuan11hg@gmail.com">minhtuan11hg@gmail.com</a>
-        </div>
       </section>
 
       <!-- DOCS / LIST -->
@@ -270,7 +324,7 @@
               <option value="all">Tất cả loại đề</option>
               <option value="tho8chu">Thơ 8 chữ</option>
               <option value="songthat">Thơ song thất</option>
-              <option value="vanhay">Thơ hay / Văn hay</option>
+              <option value="vanhay">Thơ/Văn hay</option>
             </select>
             <button id="btnClear" class="btn" style="padding:8px 12px;border-radius:8px">Xóa</button>
           </div>
@@ -280,66 +334,63 @@
           <h2>Danh sách đề</h2>
           <div class="list" style="margin-top:8px">
 
-            <!-- Thơ 8 chữ -->
             <a class="item" data-type="tho8chu" href="bai1.html">
-              <div class="left"><div class="idx">1</div><div><strong> Đề 1 — Thơ 8 chữ</strong><div class="desc"></div></div></div>
+              <div class="left"><div class="idx">1</div><div><strong>Đề 1 — Thơ 8 chữ</strong><div class="desc"></div></div></div>
               <div class="open">Mở</div>
             </a>
 
             <a class="item" data-type="tho8chu" href="bai2.html">
-              <div class="left"><div class="idx">2</div><div><strong> Đề 2 — Thơ 8 chữ</strong><div class="desc"></div></div></div>
+              <div class="left"><div class="idx">2</div><div><strong>Đề 2 — Thơ 8 chữ</strong><div class="desc"></div></div></div>
               <div class="open">Mở</div>
             </a>
 
             <a class="item" data-type="tho8chu" href="bai3.html">
-              <div class="left"><div class="idx">3</div><div><strong> Đề 3 — Thơ 8 chữ</strong><div class="desc"></div></div></div>
+              <div class="left"><div class="idx">3</div><div><strong>Đề 3 — Thơ 8 chữ</strong><div class="desc"></div></div></div>
               <div class="open">Mở</div>
             </a>
 
-            <!-- Song thất -->
             <a class="item" data-type="songthat" href="bai4.html">
-              <div class="left"><div class="idx">4</div><div><strong> Đề 4 — Song thất</strong><div class="desc"></div></div></div>
+              <div class="left"><div class="idx">4</div><div><strong>Đề 4 — Song thất</strong><div class="desc"></div></div></div>
               <div class="open">Mở</div>
             </a>
 
             <a class="item" data-type="songthat" href="bai5.html">
-              <div class="left"><div class="idx">5</div><div><strong> Đề 5 — Song thất</strong><div class="desc"></div></div></div>
+              <div class="left"><div class="idx">5</div><div><strong>Đề 5 — Song thất</strong><div class="desc"></div></div></div>
               <div class="open">Mở</div>
             </a>
 
             <a class="item" data-type="songthat" href="bai6.html">
-              <div class="left"><div class="idx">6</div><div><strong> Đề 6 — Song thất</strong><div class="desc"></div></div></div>
+              <div class="left"><div class="idx">6</div><div><strong>Đề 6 — Song thất</strong><div class="desc"></div></div></div>
               <div class="open">Mở</div>
             </a>
 
-            <!-- Thơ/Văn hay (7..12: restore full set of 6 items) -->
             <a class="item" data-type="vanhay" href="bai7.html">
-              <div class="left"><div class="idx">7</div><div><strong> Đề 7 — Văn hay</strong><div class="desc"></div></div></div>
+              <div class="left"><div class="idx">7</div><div><strong>Đề 7 — Văn hay</strong><div class="desc"></div></div></div>
               <div class="open">Mở</div>
             </a>
 
             <a class="item" data-type="vanhay" href="bai8.html">
-              <div class="left"><div class="idx">8</div><div><strong> Đề 8 — Văn hay</strong><div class="desc"></div></div></div>
+              <div class="left"><div class="idx">8</div><div><strong>Đề 8 — Văn hay</strong><div class="desc"></div></div></div>
               <div class="open">Mở</div>
             </a>
 
             <a class="item" data-type="vanhay" href="bai9.html">
-              <div class="left"><div class="idx">9</div><div><strong> Đề 9 — Văn hay</strong><div class="desc"></div></div></div>
+              <div class="left"><div class="idx">9</div><div><strong>Đề 9 — Văn hay</strong><div class="desc"></div></div></div>
               <div class="open">Mở</div>
             </a>
 
             <a class="item" data-type="vanhay" href="bai10.html">
-              <div class="left"><div class="idx">10</div><div><strong> Đề 10 — Văn hay</strong><div class="desc"></div></div></div>
+              <div class="left"><div class="idx">10</div><div><strong>Đề 10 — Văn hay</strong><div class="desc"></div></div></div>
               <div class="open">Mở</div>
             </a>
 
             <a class="item" data-type="vanhay" href="bai11.html">
-              <div class="left"><div class="idx">11</div><div><strong> Dề 11 — Văn hay</strong><div class="desc"></div></div></div>
+              <div class="left"><div class="idx">11</div><div><strong>Đề 11 — Văn hay</strong><div class="desc"></div></div></div>
               <div class="open">Mở</div>
             </a>
 
             <a class="item" data-type="vanhay" href="bai12.html">
-              <div class="left"><div class="idx">12</div><div><strong> Đề 12 — Văn hay</strong><div class="desc"></div></div></div>
+              <div class="left"><div class="idx">12</div><div><strong>Đề 12 — Văn hay</strong><div class="desc"></div></div></div>
               <div class="open">Mở</div>
             </a>
 
@@ -361,7 +412,7 @@
             <article class="news-item">
               <time datetime="2025-11-25">25/11/2025</time>
               <strong>Cập nhật: Thêm 6 đề thơ hay</strong>
-              <p class="desc">Đãđăng tải.</p>
+              <p class="desc">Đã đăng tải.</p>
             </article>
 
             <article class="news-item">
@@ -380,12 +431,36 @@
           <p class="desc">Mail liên hệ dự án: <a href="mailto:minhtuan11hg@gmail.com">minhtuan11hg@gmail.com</a></p>
         </div>
       </section>
+
+      <!-- PROJECT CARD: moved to bottom and styled -->
+      <section id="project" class="project-card fade-in" aria-label="Thông tin dự án">
+        <div class="inner">
+          <div class="thumb" aria-hidden="true">
+            <img src="anhnhom.jpg" alt="Ảnh nhóm dự án">
+          </div>
+          <div class="content">
+            <h3>Thông tin dự án</h3>
+            <div class="names">Dự án: <span style="font-weight:800">Nguyễn Minh Tuấn · Vũ Tiến Phúc · Ngô Bảo Khánh · Hà Giang</span></div>
+            <p class="desc">Chủ trì (GV): <strong>Vũ Thị Kiều Oanh</strong></p>
+            <div class="meta-row">
+              <a class="mail-btn" href="mailto:minhtuan11hg@gmail.com" aria-label="Gửi email liên hệ">✉️ Liên hệ qua email</a>
+              <span style="color:var(--muted); font-size:13px"></span>
+            </div>
+          </div>
+        </div>
+      </section>
+
     </main>
 
     <footer>
       © Kho Đề Ôn Vào 10 — Tuyên Quang · Liên hệ: <a href="mailto:minhtuan11hg@gmail.com">minhtuan11hg@gmail.com</a>
     </footer>
   </div>
+
+  <!-- Floating button: mở báo cáo (mở tab mới) -->
+  <a href="bao-cao.html" class="floating-btn" target="_blank" rel="noopener" aria-label="Mở báo cáo STEM">
+    📘 Báo cáo
+  </a>
 
   <script>
     // NAV: set active on click
@@ -502,6 +577,7 @@
   </script>
 </body>
 </html>
+
 
 
 
