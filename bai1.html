@@ -3,18 +3,111 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Bài 1 - Chiều Thu Quê Hương — Bài tập</title>
+<title>Bài 1 - Chiều Thu Quê Hương — Bài tập + Hướng dẫn</title>
 <style>
-:root{--bg:#f5f6f7;--card:#fff;--accent:#0ea5a4;--muted:#6b7280;--max:900px}
-body{font-family:Inter,system-ui,Segoe UI,Roboto,Arial;background:var(--bg);margin:0;padding:20px;color:#071124}
-.wrap{max-width:var(--max);margin:20px auto;background:var(--card);padding:22px;border-radius:12px;border:1px solid #ececec}
-.header-row{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:12px}
-h1{margin:0;font-size:22px}
+:root{
+  --bg:#f5f6f7;
+  --card:#fff;
+  --accent:#0ea5a4;
+  --muted:#6b7280;
+  --max:900px;
+  --radius:12px;
+}
+
+/* Base */
+*{box-sizing:border-box}
+html,body{height:100%;margin:0;padding:0}
+body{
+  font-family:Inter,system-ui,Segoe UI,Roboto,Arial,sans-serif;
+  background:var(--bg);color:#071124;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  line-height:1.45;
+  padding:20px;
+}
+.wrap{
+  max-width:var(--max);
+  margin:20px auto;
+  background:var(--card);
+  padding:22px;
+  border-radius:var(--radius);
+  border:1px solid #ececec;
+  box-shadow: 0 6px 20px rgba(2,6,23,0.04);
+}
+
+/* Header */
+.header-row{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:12px;flex-wrap:wrap}
+h1{margin:0;font-size:clamp(18px,3.2vw,22px)}
 .btn{display:inline-block;padding:8px 12px;border-radius:20px;text-decoration:none;font-size:14px;background:var(--accent);color:#fff}
-.article{white-space:pre-wrap;background:#fbfcfd;padding:14px;border-radius:8px;border-left:4px solid var(--accent);line-height:1.6}
+
+/* Article / poem */
+.article{
+  background:#fbfcfd;
+  padding:14px;border-radius:8px;border-left:4px solid var(--accent);
+  line-height:1.7;color:#062733;margin-top:8px;
+}
+
+/* Poem wrapper: preserve line breaks, prevent mid-word breaks,
+   but allow horizontal scroll on small viewports so lines are not broken "lung tung" */
+.poem-wrap{
+  overflow-x:auto;
+  -webkit-overflow-scrolling:touch;
+  padding:8px 0;
+}
+.poem{
+  margin:0;
+  padding:0;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(15px, 3.8vw, 17px);
+  white-space: pre; /* preserve exact line breaks */
+  line-height:1.6;
+  color: #0b3440;
+  min-width: 520px; /* ensures reasonable width on desktop; mobile can scroll */
+}
+
+/* Questions */
 .q{margin:16px 0;padding:12px;background:#fff;border:1px solid #f0f0f0;border-radius:8px;line-height:1.6}
 small.source{display:block;margin-top:10px;color:var(--muted);font-size:13px}
-h2{margin-top:28px}
+h2{margin-top:20px;color:#07323a}
+
+/* Solutions block */
+.solutions{margin-top:20px}
+.solution-card{
+  background: linear-gradient(180deg, rgba(14,165,164,0.04), rgba(255,255,255,0.98));
+  border-radius:10px;padding:12px;border:1px solid rgba(11,114,133,0.06);
+  margin-bottom:12px;
+}
+.solution-card h3{margin:0 0 10px 0;font-size:16px;color:#07323a}
+.hint-row{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:8px}
+.hint-btn{
+  background:#fff;border:1px solid rgba(7,17,36,0.06);padding:8px 10px;border-radius:8px;cursor:pointer;font-weight:700;
+  transition:transform .12s;
+}
+.hint-btn:hover{transform:translateY(-3px)}
+.hint-content{
+  display:none;background:#fff;padding:10px;border-radius:8px;border:1px solid #e6f3f2;color:#07323a;
+  margin-top:8px;
+}
+.hint-content.open{display:block}
+
+/* small helpers */
+.kicker{font-size:13px;color:var(--muted);margin-bottom:8px}
+ul{margin:8px 0 8px 18px}
+
+/* Responsive improvements */
+@media (max-width:720px){
+  .wrap{padding:16px}
+  .header-row{align-items:flex-start}
+  .poem{min-width:420px} /* allow slightly smaller min width so mobile horizontal scroll less extreme */
+  .q{padding:10px}
+  .solution-card{padding:10px}
+}
+
+/* Prevent mobile weird hyphenation/wrap */
+.poem, .article, .q{word-break:normal;overflow-wrap:normal;}
+
+/* Accessibility focus */
+.hint-btn:focus{outline:3px solid rgba(14,165,164,0.16);outline-offset:3px}
 </style>
 </head>
 <body>
@@ -22,40 +115,43 @@ h2{margin-top:28px}
 
   <div class="header-row">
     <h1>Bài 1 - Chiều Thu Quê Hương</h1>
-    <a class="btn" href="index.html" title="Về trang chủ">← Về trang chủ</a>
+    <div style="display:flex;gap:8px;align-items:center;">
+      <a class="btn" href="index.html" title="Về trang chủ">← Về trang chủ</a>
+      <a class="btn" href="#solutions" style="background:#0b7285">Xem hướng dẫn</a>
+    </div>
   </div>
 
   <section>
     <h2>I. PHẦN ĐỌC HIỂU (4,0 điểm)</h2>
     <h3>Đọc văn bản sau:</h3>
 
-    <article class="article">
-     Chiều thu trong, lá trúc vờn đẹp quá.
-     Lá mía xanh nhung quạt vào mái rạ
-     Tiếng lao xao như ai ngả nón chào.
-     Hoa mướp cuối mùa vàng rực như sao,
-     Giếng trong lẻo, trời xanh in thăm thẳm.
-     Chiều thu quê hương sao mà đằm thắm!
-     Tôi bước giữa vườn, bạn với hàng cau
-     Hút nắng tơ vàng như những đài cao
-     Đứng lồng lộng, thu tiếng chiều vàng rợi.
-     Vồng khoai lang xòe lá ra nằm sưởi
-     Cùng với gà mẹ xòe cánh ấp con.
-     Ở trước sân nhà mấy đống gạch son,
-     Hố vôi trắng nằm đợi ngày xây dựng.
-     Trời thu trong em bé cười má ửng;
-     Như cây sai mẹ đứng giữa chùm con.
-     Chiều thu vàng vàng rực cả tâm hồn
-     Của đất nước đang bồi da thắm thịt.
-     Gió biển mặn thổi về đây tha thiết;
-     Những con chim phơi phới cánh, chiều thu
-     Náo nức như triều, êm ả như ru…
+    <article class="article" aria-labelledby="poem-title">
+      <div id="poem-title" style="font-weight:700;margin-bottom:8px">Chiều thu quê hương (Huy Cận)</div>
+      <div class="poem-wrap" role="region" aria-label="Bài thơ Chiều thu quê hương">
+<pre class="poem">Chiều thu trong, lá trúc vờn đẹp quá.
+Lá mía xanh nhung quạt vào mái rạ
+Tiếng lao xao như ai ngả nón chào.
+Hoa mướp cuối mùa vàng rực như sao,
+Giếng trong lẻo, trời xanh in thăm thẳm.
+Chiều thu quê hương sao mà đằm thắm!
+Tôi bước giữa vườn, bạn với hàng cau
+Hút nắng tơ vàng như những đài cao
+Đứng lồng lộng, thu tiếng chiều vàng rợi.
+Vồng khoai lang xòe lá ra nằm sưởi
+Cùng với gà mẹ xòe cánh ấp con.
+Ở trước sân nhà mấy đống gạch son,
+Hố vôi trắng nằm đợi ngày xây dựng.
+Trời thu trong em bé cười má ửng;
+Như cây sai mẹ đứng giữa chùm con.
+Chiều thu vàng vàng rực cả tâm hồn
+Của đất nước đang bồi da thắm thịt.
+Gió biển mặn thổi về đây tha thiết;
+Những con chim phơi phới cánh, chiều thu
+Náo nức như triều, êm ả như ru…</pre>
+      </div>
 
-(Huy Cận, "Chiều thu quê hương", in trong tập thơ Trời mỗi ngày lại sáng, 1958)
-
-* Ghi chú: Huy Cận sáng tác “Chiều thu quê hương” năm 1958. Bài thơ toát lên vẻ đẹp nên thơ, yên bình của buổi chiều thu khi miền Bắc đã sạch bóng quân thù.
+      <small class="source">Nguồn: Huy Cận — Trích tập thơ (1958)</small>
     </article>
-    <small class="source">Nguồn: Huy Cận — Trích tập thơ (1958)</small>
   </section>
 
   <section>
@@ -64,17 +160,17 @@ h2{margin-top:28px}
     <div class="q"><strong>Câu 1 (0,5 điểm).</strong> Chỉ rõ cách gieo vần chân trong bốn câu thơ đầu.</div>
 
     <div class="q"><strong>Câu 2 (1,0 điểm).</strong> Hãy chỉ ra và nêu tác dụng của yếu tố miêu tả trong việc khắc họa vẻ đẹp quê hương ở đoạn thơ:
-<pre>Đứng lồng lộng, thu tiếng chiều vàng rợi.
+<pre style="margin:0">Đứng lồng lộng, thu tiếng chiều vàng rợi.
 Vồng khoai lang xòe lá ra nằm sưởi
 Cùng với gà mẹ xòe cánh ấp con.
 Ở trước sân nhà mấy đống gạch son,</pre>
-</div>
+    </div>
 
     <div class="q"><strong>Câu 3 (0,5 điểm).</strong> Từ hoàn cảnh ra đời của bài thơ, em hiểu như thế nào về ý nghĩa của hai câu thơ “Chiều thu vàng vàng rực cả tâm hồn/Của đất nước đang bồi da thắm thịt?”</div>
 
     <div class="q"><strong>Câu 4 (1,0 điểm).</strong> Biện pháp tu từ so sánh trong hai câu thơ “Những con chim phơi phới cánh, chiều thu/Náo nức như triều, êm ả như ru…” mang lại hiệu quả nghệ thuật gì trong việc biểu hiện tình cảm, cảm xúc của tác giả?</div>
 
-    <div class="q"><strong>Câu 5 (1,0 điểm).</strong> Bài thơ gợi ta nhớ đến những khoảnh khắc bình yên trong cuộc sống. Em hãy chia sẻ một khoảnh khắc như vậy và nêu ý nghĩa của khoảnh khắc đó đối với em?</div>
+    <div class="q"><strong>Câu 5 (1,0 điểm).</strong> Bài thơ gợi ta nhớ đến những khoảnh khắc bình yên trong cuộc sống. Em hãy chia sẻ một khoảnh khắc như vậy và nêu ý nghĩa của khoảnh khắc đó đối với em?</div>
   </section>
 
   <section>
@@ -83,13 +179,270 @@ Cùng với gà mẹ xòe cánh ấp con.
     <div class="q"><strong>Câu 1 (2,0 điểm).</strong> Viết đoạn văn (khoảng 200 chữ) phân tích sáu dòng thơ đầu của văn bản “Chiều thu quê hương” trong phần đọc hiểu.</div>
 
     <div class="q"><strong>Câu 2 (4,0 điểm).</strong>
-	Quê hương đất nước không chỉ có những ngày yên bình mà còn phải đối mặt với những khó khăn, thử thách đến từ chiến tranh, thiên tai…Sau cơn bão Yagi vừa qua, người dân đang phải gồng mình với bao mất mát, đau thương. Hãy viết bài văn nghị luận khoảng 400 chữ để trả lời cho câu hỏi “Làm thế nào để những vùng quê bão lũ sớm trở lại bình yên?”.
-	</div>
+      Quê hương đất nước không chỉ có những ngày yên bình mà còn phải đối mặt với những khó khăn, thử thách đến từ chiến tranh, thiên tai…Sau cơn bão Yagi vừa qua, người dân đang phải gồng mình với bao mất mát, đau thương. Hãy viết bài văn nghị luận khoảng 400 chữ để trả lời cho câu hỏi “Làm thế nào để những vùng quê bão lũ sớm trở lại bình yên?”.
+    </div>
 
   </section>
 
   <p style="text-align:center;margin-top:20px;color:var(--muted)">------------------Hết-------------------</p>
 
+  <!-- SOLUTIONS -->
+  <section id="solutions" class="solutions" aria-labelledby="solutions-title">
+    <h2 id="solutions-title"> -HƯỚNG DẪN GIẢI-</h2>
+
+    <!-- Q1 -->
+    <div class="solution-card" id="sol-q1">
+      <h3>Câu 1 — Gợi ý phân tích gieo vần (0,5 đ)</h3>
+      <div class="kicker">Mục tiêu: chỉ rõ vần chân và cách gieo vần liền trong bốn câu đầu</div>
+      <div class="hint-row">
+        <button class="hint-btn" data-target="q1-h1">Hint 1 (nhỏ)</button>
+        <button class="hint-btn" data-target="q1-h2">Hint 2 (chỉ dẫn)</button>
+        <button class="hint-btn" data-target="q1-full">Lời giải hướng dẫn</button>
+      </div>
+      <div id="q1-h1" class="hint-content">
+        - Hãy đọc 4 câu đầu, chú ý từ ở cuối mỗi dòng. <br>
+        - Tìm những âm giống nhau ở cuối dòng → đó là vần chân.
+      </div>
+      <div id="q1-h2" class="hint-content">
+        - Ghi nhận các từ cuối: "quá", "rạ", "chào", "sao". <br>
+        - So sánh âm cuối: "quá" ~ "rạ" cùng vần, "chào" ~ "sao" cùng vần (ghép thành 2 cặp).
+      </div>
+      <div id="q1-full" class="hint-content">
+        <strong>Hướng dẫn:</strong>
+        <ul>
+          <li>Xác định vần ở cuối từng câu: câu 1 kết vần "quá", câu 2 "rạ", câu 3 "chào", câu 4 "sao".</li>
+          <li>Nhận xét: bốn câu đầu được gieo vần liền theo cặp: "quá"–"rạ" (vần a), "chào"–"sao" (vần ao). Ghi điểm khi HS nêu đúng cặp và giải thích ngắn gọn.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Q2 -->
+    <div class="solution-card" id="sol-q2">
+      <h3>Câu 2 — Yếu tố miêu tả & tác dụng (1,0 đ)</h3>
+      <div class="kicker">Mục tiêu: chỉ ra chi tiết miêu tả và nêu tác dụng của chúng</div>
+      <div class="hint-row">
+        <button class="hint-btn" data-target="q2-h1">Hint 1</button>
+        <button class="hint-btn" data-target="q2-h2">Hint 2</button>
+        <button class="hint-btn" data-target="q2-full">Lời giải hướng dẫn</button>
+      </div>
+      <div id="q2-h1" class="hint-content">
+        - Tập trung tìm các hình ảnh miêu tả: "Đứng lồng lộng", "tiếng chiều vàng rợi", "vồng khoai...", "gà mẹ...", "gạch son"...
+      </div>
+      <div id="q2-h2" class="hint-content">
+        - Nêu tác dụng: mỗi chi tiết góp phần xây dựng bức tranh quê yên bình, sinh động, ấm áp; giúp người đọc cảm nhận xúc cảm của tác giả.
+      </div>
+      <div id="q2-full" class="hint-content">
+        <strong>Hướng dẫn:</strong>
+        <ol>
+          <li>Liệt kê những chi tiết miêu tả (ít nhất 3): ví dụ: "Đứng lồng lộng", "tiếng chiều vàng rợi", "vồng khoai lang xòe lá", "gà mẹ xòe cánh", "mấy đống gạch son".</li>
+          <li>Phân tích tác dụng của từng chi tiết: làm nổi bật tính sinh động, thân thuộc của làng quê; gợi cảm giác bình yên, ấm áp; tạo contrast với hình ảnh quá khứ chiến tranh (ngầm hiểu về hòa bình).</li>
+          <li>Kết luận ngắn: miêu tả góp phần khắc hoạ tình cảm yêu quê hương, niềm hạnh phúc khi hòa bình trở lại.</li>
+        </ol>
+      </div>
+    </div>
+
+    <!-- Q3 -->
+    <div class="solution-card" id="sol-q3">
+      <h3>Câu 3 — Ý nghĩa hai câu thơ (0,5 đ)</h3>
+      <div class="kicker">Mục tiêu: liên hệ hoàn cảnh sáng tác để giải thích tinh thần, cảm xúc</div>
+      <div class="hint-row">
+        <button class="hint-btn" data-target="q3-h1">Hint 1</button>
+        <button class="hint-btn" data-target="q3-h2">Hint 2</button>
+        <button class="hint-btn" data-target="q3-full">Lời giải hướng dẫn</button>
+      </div>
+      <div id="q3-h1" class="hint-content">
+        - Hãy nhớ hoàn cảnh: miền Bắc đã giải phóng → cảm xúc của tác giả.
+      </div>
+      <div id="q3-h2" class="hint-content">
+        - Từ "vàng vàng rực" + "bồi da thắm thịt" gợi niềm vui, tự hào, ấm áp về đất nước đang hồi sinh.
+      </div>
+      <div id="q3-full" class="hint-content">
+        <strong>Hướng dẫn trả lời:</strong>
+        <ul>
+          <li>Mở đầu: nêu hoàn cảnh (sau ngày miền Bắc giải phóng), tác giả cảm nhận niềm vui chung.</li>
+          <li>Giải thích hình ảnh: "Chiều thu vàng vàng rực cả tâm hồn" = niềm vui, niềm an bình; "bồi da thắm thịt" = hình ảnh ẩn dụ cho sự hồi sinh, lớn mạnh của đất nước.</li>
+          <li>Kết: liên hệ cảm xúc tự hào, hy vọng vào tương lai.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Q4 -->
+    <div class="solution-card" id="sol-q4">
+      <h3>Câu 4 — Hiệu quả của so sánh (1,0 đ)</h3>
+      <div class="kicker">Mục tiêu: phân tích tác dụng của biện pháp so sánh</div>
+      <div class="hint-row">
+        <button class="hint-btn" data-target="q4-h1">Hint 1</button>
+        <button class="hint-btn" data-target="q4-h2">Hint 2</button>
+        <button class="hint-btn" data-target="q4-full">Lời giải hướng dẫn</button>
+      </div>
+      <div id="q4-h1" class="hint-content">
+        - Tìm hai hình ảnh so sánh: "như triều" và "như ru".</div>
+      <div id="q4-h2" class="hint-content">
+        - Nghĩ xem "triều" → náo nức, mạnh mẽ; "ru" → êm ái, dịu dàng. So sánh cho thấy cảm xúc phức hợp.</div>
+      <div id="q4-full" class="hint-content">
+        <strong>Hướng dẫn:</strong>
+        <ol>
+          <li>Chỉ rõ: tác giả so sánh cảnh chim với "triều" và "ru".</li>
+          <li>Phân tích từng hình ảnh: "triều" gợi nhịp, sức sống náo nức; "ru" gợi êm đềm, dịu dàng.</li>
+          <li>Nhận xét tổng quát: biện pháp so sánh vừa diễn tả sự náo nức của cảnh vật vừa bộc lộ nỗi niềm thiết tha, hạnh phúc của tác giả — cảm xúc phong phú, mạnh mẽ nhưng ấm áp.</li>
+        </ol>
+      </div>
+    </div>
+
+    <!-- Q5 -->
+    <div class="solution-card" id="sol-q5">
+      <h3>Câu 5 — Viết cảm nhận cá nhân (1,0 đ)</h3>
+      <div class="kicker">Mục tiêu: nêu khoảnh khắc và ý nghĩa, trình bày rõ ràng, xúc tích</div>
+      <div class="hint-row">
+        <button class="hint-btn" data-target="q5-h1">Hint 1</button>
+        <button class="hint-btn" data-target="q5-h2">Hint 2</button>
+        <button class="hint-btn" data-target="q5-full">Lời giải hướng dẫn</button>
+      </div>
+      <div id="q5-h1" class="hint-content">
+        - Chọn 1 khoảnh khắc bình yên bạn nhớ: bữa cơm gia đình, chiều ngồi bên bến nước, tản bộ vườn,...</div>
+      <div id="q5-h2" class="hint-content">
+        - Nói rõ cảm giác khi đó (thư thái, ấm áp), và ý nghĩa (xua tan lo lắng, giúp kết nối,..)</div>
+      <div id="q5-full" class="hint-content">
+        <strong>Hướng dẫn viết:</strong>
+        <ol>
+          <li>Mở bài: giới thiệu khoảnh khắc ngắn gọn (1 câu).</li>
+          <li>Thân bài: mô tả chi tiết (khung cảnh, người xuất hiện, âm thanh, mùi vị, cảm xúc). Liên hệ với bản thân (tác động của khoảnh khắc).</li>
+          <li>Kết luận: nêu ý nghĩa chung, bài học hoặc cảm nhận sâu sắc.</li>
+        </ol>
+      </div>
+    </div>
+
+    <!-- II.1 (đoạn văn) -->
+    <div class="solution-card" id="sol-ii1">
+      <h3>II.1 — Viết đoạn (khoảng 200 chữ) (2,0 đ)</h3>
+      <div class="kicker">Mục tiêu: phân tích sáu dòng thơ đầu — nội dung & nghệ thuật</div>
+      <div class="hint-row">
+        <button class="hint-btn" data-target="ii1-h1">Gợi ý cấu trúc</button>
+        <button class="hint-btn" data-target="ii1-h2">Các điểm cần có</button>
+        <button class="hint-btn" data-target="ii1-full">Mẫu hướng dẫn (khung)</button>
+      </div>
+      <div id="ii1-h1" class="hint-content">
+        - Mở đoạn: dẫn vào tác giả + tác phẩm + nội dung đoạn thơ cần phân tích. <br>
+        - Thân đoạn: nêu ý, dẫn chứng (các cụm từ, biện pháp nghệ thuật), giải thích. <br>
+        - Kết đoạn: khái quát ý nghĩa.
+      </div>
+      <div id="ii1-h2" class="hint-content">
+        - Phân tích các chi tiết miêu tả (lá trúc, lá mía, tiếng lao xao, hoa mướp, giếng trong), các biện pháp tu từ (nhân hóa, so sánh, từ láy). <br>
+        - Nêu kết luận về cảm xúc tác giả: ấm áp, say mê, niềm tự hào.
+      </div>
+      <div id="ii1-full" class="hint-content">
+        <strong>Khung gợi ý (để HS triển khai thành ~200 chữ):</strong>
+        <ol>
+          <li>Mở đoạn (1 câu): Giới thiệu tác giả, bài thơ và tập trung vào sáu dòng đầu.</li>
+          <li>Thân đoạn (2-3 câu): Lấy dẫn chứng cụ thể (trích một vài từ/ cụm) → phân tích nghệ thuật (từ láy, nhân hóa, so sánh) → nêu hiệu quả (gợi hình, gợi cảm).</li>
+          <li>Kết đoạn (1 câu): Khẳng định giá trị nghệ thuật và cảm xúc mà đoạn thơ truyền tải.</li>
+        </ol>
+      </div>
+    </div>
+
+    <!-- II.2 (bài văn nghị luận) -->
+    <div class="solution-card" id="sol-ii2">
+      <h3>II.2 — Bài văn nghị luận (4,0 đ)</h3>
+      <div class="kicker">Mục tiêu: lập luận rõ ràng, có dẫn chứng, nêu giải pháp cụ thể</div>
+      <div class="hint-row">
+        <button class="hint-btn" data-target="ii2-h1">Gợi ý cấu trúc</button>
+        <button class="hint-btn" data-target="ii2-h2">Ý chính & dẫn chứng</button>
+        <button class="hint-btn" data-target="ii2-full">Khung bài mẫu</button>
+      </div>
+      <div id="ii2-h1" class="hint-content">
+        - Mở bài: nêu vấn đề và tầm quan trọng (vùng quê cần phục hồi). <br>
+        - Thân bài: nêu thực trạng, nguyên nhân, triển khai giải pháp (cá nhân, cộng đồng, Nhà nước). <br>
+        - Kết bài: khẳng định lại quan điểm và kêu gọi hành động.
+      </div>
+      <div id="ii2-h2" class="hint-content">
+        - Dùng dẫn chứng thực tế (như hậu quả bão: nhà sập, mất mùa) và nêu các giải pháp hợp lý: cứu trợ khẩn cấp, tái thiết, hỗ trợ tâm lý, quy hoạch chống lũ, giáo dục phòng tránh, huy động cộng đồng).
+      </div>
+      <div id="ii2-full" class="hint-content">
+        <strong>Khung bài (~400 chữ):</strong>
+        <ol>
+          <li>Mở bài: Giới thiệu vấn đề (bão lũ khiến vùng quê thiệt hại nặng → cần phục hồi nhanh chóng).</li>
+          <li>Thân bài:
+            <ul>
+              <li>Thực trạng: mô tả thiệt hại, khó khăn.</li>
+              <li>Nguyên nhân: thiên tai, nhà ở yếu, quản lý rủi ro chưa tốt.</li>
+              <li>Giải pháp: (1) Hỗ trợ khẩn cấp (lương thực, thuốc, chỗ ở tạm), (2) Tổ chức sửa chữa, huy động lực lượng tình nguyện, (3) Chính sách dài hạn: xây nhà kiên cố, cảnh báo sớm, trồng rừng chắn gió, cải tạo hệ thống tiêu thoát nước, (4) Giáo dục cộng đồng, nâng cao nhận thức phòng chống thiên tai.</li>
+            </ul>
+          </li>
+          <li>Kết bài: Khẳng định: chỉ khi nhà nước, cộng đồng và mỗi người cùng hành động thì vùng quê mới sớm bình yên trở lại.</li>
+        </ol>
+      </div>
+    </div>
+
+    <p style="font-size:13px;color:var(--muted)">Ghi chú: Các phần "Lời giải hướng dẫn" trên chỉ là khung gợi ý chi tiết — không nêu toàn bộ bài làm hoàn chỉnh. Giáo viên có thể khuyến khích HS phát triển câu từ, dẫn chứng và cách diễn đạt riêng.</p>
+  </section>
+
 </div>
+
+<script>
+  // Toggle hint panels and persist open state in localStorage
+  (function(){
+    const buttons = document.querySelectorAll('.hint-btn');
+    buttons.forEach(btn=>{
+      btn.addEventListener('click', ()=>{
+        const id = btn.getAttribute('data-target');
+        const el = document.getElementById(id);
+        if(!el) return;
+        const isOpen = el.classList.toggle('open');
+        // save state
+        try {
+          const key = 'hk_open_' + id;
+          localStorage.setItem(key, isOpen ? '1' : '0');
+        } catch(e){}
+      });
+    });
+
+    // restore state
+    try {
+      const contents = document.querySelectorAll('.hint-content');
+      contents.forEach(c=>{
+        const key = 'hk_open_' + c.id;
+        const val = localStorage.getItem(key);
+        if(val === '1') c.classList.add('open');
+      });
+    } catch(e){}
+
+    // Accessibility: allow toggle via Enter/Space on buttons (they are button elements so already accessible)
+  })();
+
+  // Improve horizontal scroll hint on touch devices (optional small hint)
+  (function(){
+    const poemWrap = document.querySelector('.poem-wrap');
+    if(!poemWrap) return;
+    // if content wider than container, show a subtle hint once
+    function showHintOnce(){
+      try {
+        const key='poem_scroll_hint_seen';
+        if(localStorage.getItem(key)) return;
+        if(poemWrap.scrollWidth > poemWrap.clientWidth + 8){
+          // create temp hint
+          const hint = document.createElement('div');
+          hint.textContent = 'Vuốt ngang để xem nguyên dòng thơ';
+          hint.style.position='absolute';
+          hint.style.right='30px';
+          hint.style.top='8px';
+          hint.style.background='rgba(11,114,133,0.12)';
+          hint.style.color='#07323a';
+          hint.style.padding='6px 10px';
+          hint.style.borderRadius='999px';
+          hint.style.fontSize='12px';
+          hint.style.zIndex='30';
+          hint.style.pointerEvents='none';
+          document.querySelector('.poem-wrap').style.position='relative';
+          document.querySelector('.poem-wrap').appendChild(hint);
+          setTimeout(()=>{ hint.remove(); }, 3500);
+          localStorage.setItem(key,'1');
+        }
+      } catch(e){}
+    }
+    window.addEventListener('load', showHintOnce);
+    window.addEventListener('resize', showHintOnce);
+  })();
+</script>
+
 </body>
 </html>
