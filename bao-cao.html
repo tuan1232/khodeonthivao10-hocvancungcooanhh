@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Báo cáo sản phẩm — Kho Đề Ôn Vào 10</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{ --accent:#0b7285; --accent-2:#0ea5a4; --max:1100px }
+    *{box-sizing:border-box}
+    body{
+      margin:0; font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial; background:#f5f6f7; color:#071124; -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale; line-height:1.45;
+    }
+    .wrap{max-width:var(--max);margin:18px auto;padding:0 16px}
+    header{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 0}
+    .brand{display:flex;align-items:center;gap:12px}
+    .logo{width:56px;height:56px;border-radius:10px;background:linear-gradient(135deg,var(--accent),var(--accent-2));display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700}
+    .titles h1{font-size:18px;margin:0}
+    nav{margin-top:6px}
+    nav a{color:var(--accent);text-decoration:none;font-weight:700}
+
+    /* Report card: Times New Roman, formal margins */
+    .report-wrap{display:flex;justify-content:center;padding:18px 0}
+    .report-card{
+      width:100%; max-width:900px; background:#fff; padding:2.5cm; /* emulate 2.5cm margin */
+      box-shadow:0 10px 30px rgba(2,6,23,0.06); border-radius:8px; border:1px solid #eee;
+      font-family:'Times New Roman', Times, serif; color:#111; line-height:1.5; font-size:15px;
+    }
+    .report-card h2, .report-card h3{font-family:Inter, serif; color:#062733; margin:0 0 8px 0}
+    .center {text-align:center}
+    .uppercase {text-transform:uppercase}
+    .bold {font-weight:700}
+    .meta {color:#555; margin-bottom:12px}
+    .section {margin-top:18px}
+    .lead {margin-bottom:12px}
+    .authors {margin-top:8px}
+
+    /* print friendly */
+    @media print{
+      body{background:#fff}
+      .wrap{max-width:100%; padding:0}
+      .report-card{box-shadow:none;border:none;padding:2.5cm}
+    }
+
+    /* small utility */
+    .back-home{display:inline-block;margin-bottom:12px;padding:8px 12px;background:linear-gradient(90deg,var(--accent),var(--accent-2));color:#fff;border-radius:8px;text-decoration:none}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <div class="logo">KV</div>
+        <div class="titles">
+          <h1>Kho Đề Ôn Vào 10 — Học Văn cùng Cô Oanh</h1>
+          <div class="meta">Báo cáo sản phẩm STEM — Dự án tạo website &amp; mã QR</div>
+        </div>
+      </div>
+      <div>
+        <a class="back-home" href="index.html">← Về trang chủ</a>
+      </div>
+    </header>
+
+    <main class="report-wrap">
+      <article class="report-card" role="article" aria-label="Báo cáo sản phẩm">
+
+        <div class="center">
+          <div class="uppercase bold">CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM</div>
+          <div class="uppercase bold">Độc lập – Tự do – Hạnh phúc</div>
+          <hr style="margin:12px auto 18px; width:60px; border:none; border-top:2px solid #222">
+        </div>
+
+        <h2 class="center">BÁO CÁO SẢN PHẨM STEM</h2>
+        <h3 class="center" style="margin-top:6px">DỰ ÁN: “KHO ĐỀ ÔN THI VÀO 10 - HỌC VĂN CÙNG CÔ OANH”</h3>
+
+        <section class="section">
+          <h3>I. Thông tin chung</h3>
+          <div class="lead">
+            <p><strong>Tên sản phẩm:</strong> Dự án tạo website sử dụng mã QR truy cập: “Kho đề ôn thi vào 10 – Học văn cùng cô Oanh”</p>
+            <p><strong>Tên chủ đề/bài học, lớp, môn:</strong> Chuyên đề ôn thi vào 10 – Môn Ngữ văn</p>
+            <p><strong>Họ và tên học sinh/nhóm học sinh:</strong></p>
+            <div class="authors">
+              <p>1. Nguyễn Minh Tuấn – Lớp 9A2</p>
+              <p>2. Vũ Tiến Phúc – Lớp 9A2</p>
+              <p>3. Ngô Bảo Khánh – Lớp 9A2</p>
+              <p>4. Hà Giang – Lớp 9A2</p>
+            </div>
+            <p><strong>Họ và tên giáo viên hướng dẫn:</strong> Vũ Thị Kiều Oanh</p>
+          </div>
+        </section>
+
+        <section class="section">
+          <h3>II. Nội dung mô tả sản phẩm</h3>
+
+          <p class="lead"><strong>Lý do lựa chọn đề tài</strong></p>
+          <p>Trong những năm gần đây, kỳ thi tuyển sinh vào lớp 10 ngày càng có tính cạnh tranh cao, đặc biệt là đối với môn Ngữ văn – môn thi bắt buộc và chiếm thời lượng lớn trong bài thi. Tuy nhiên, nhiều học sinh lớp 9 vẫn gặp khó khăn khi tìm kiếm nguồn tài liệu ôn tập phù hợp, hệ thống và tin cậy. Tài liệu trên mạng thường rời rạc, không được sắp xếp theo chủ đề, gây mất thời gian và khó khăn trong quá trình tự học.</p>
+
+          <p>Bên cạnh đó, xu hướng ứng dụng công nghệ thông tin trong giáo dục ngày càng phát triển. Việc xây dựng một website học tập không chỉ góp phần đổi mới phương pháp học mà còn giúp học sinh tiếp cận kiến thức một cách trực quan, dễ dàng hơn. Đây cũng là cơ hội để chúng em vận dụng kiến thức STEM – đặc biệt là công nghệ và kỹ thuật vào áp dụng thực tiễn trong môn Ngữ văn.</p>
+
+          <p>Vì vậy, nhóm chúng em muốn tạo ra một giải pháp giúp học sinh truy cập nhanh vào kho tài liệu chất lượng chỉ bằng thao tác quét mã QR dưới sự hướng dẫn và sử dụng tài liệu trong kho tài liệu của cô giáo bộ môn. Dự án “Kho đề ôn thi vào 10 – Học văn cùng cô Oanh” sử dụng mã QR ra đời nhằm giúp học sinh dễ dàng tiếp cận đề thi theo từng dạng bài.</p>
+
+          <h4 style="margin-top:12px">Quy trình tạo sản phẩm</h4>
+          <ul>
+            <li><strong>Khảo sát nhu cầu và xác định vấn đề</strong>
+              <ul>
+                <li>Học sinh lớp 9 thường gặp khó khăn trong việc tìm kiếm tài liệu ôn thi vào 10 môn Ngữ văn.</li>
+                <li>Tài liệu phân tán nhiều nơi, khó truy cập nhanh khi cần.</li>
+                <li>Cần một sản phẩm giúp truy cập tài liệu một cách tiện lợi, hiện đại — đặc biệt qua mã QR.</li>
+              </ul>
+            </li>
+
+            <li><strong>Thu thập và xử lý dữ liệu</strong>
+              <ul>
+                <li>Sưu tầm đề thi vào 10 qua các năm, đề minh họa của Sở GD-ĐT.</li>
+                <li>Tập hợp dàn ý văn học, văn mẫu, kỹ năng làm bài.</li>
+                <li>Biên tập, chỉnh sửa, thống nhất cách trình bày để đưa lên website dưới sự hướng dẫn nội dung và bộ tài liệu ôn của giáo viên bộ môn.</li>
+              </ul>
+            </li>
+
+            <li><strong>Thiết kế và xây dựng website</strong>
+              <p>– Công nghệ sử dụng: Nhóm xây dựng website bằng HTML (tạo cấu trúc), CSS (thiết kế giao diện) và Python (chạy máy chủ web và quản lý nội dung). Python được dùng với các thư viện như Flask/Django để tạo trang web dễ cập nhật.</p>
+              <p>– Thiết kế giao diện: Giao diện được thiết kế theo tiêu chí đơn giản – rõ ràng – dễ truy cập, gồm thanh menu điều hướng, màu sắc hài hòa và bố cục thân thiện với học sinh.</p>
+              <p>– Xây dựng nội dung: Tạo các trang HTML cho từng mục. Python hỗ trợ hiển thị và cập nhật nội dung.</p>
+              <p>– Sắp xếp bố cục: Nội dung được phân loại khoa học theo chuyên mục, giúp học sinh tìm tài liệu nhanh chóng. CSS được dùng để canh chỉnh khoảng cách, kiểu chữ và nút bấm.</p>
+              <p>– Kiểm tra và hoàn thiện: Kiểm thử trên máy tính và điện thoại, sửa lỗi HTML/CSS, tối ưu tốc độ tải trang và đảm bảo các liên kết Python hoạt động ổn định.</p>
+            </li>
+
+            <li><strong>Tạo đường dẫn và mã QR</strong>
+              <ul>
+                <li>Sử dụng các công cụ tạo mã QR (qr-code-generator.com, Canva).</li>
+                <li>Dán link từng mục vào ứng dụng → tạo mã QR.</li>
+                <li>Thiết kế mã QR đồng bộ về màu sắc và phong cách.</li>
+                <li>Tải mã QR về để chèn vào poster, sổ tay, hoặc website.</li>
+              </ul>
+            </li>
+
+            <li><strong>Kiểm tra và tối ưu hóa</strong>
+              <p>Dùng điện thoại quét thử từng mã QR để kiểm tra:</p>
+              <ul>
+                <li>Đường link hoạt động đúng.</li>
+                <li>Tải trang nhanh, không bị lỗi.</li>
+                <li>Nội dung hiển thị chính xác.</li>
+              </ul>
+            </li>
+
+            <li><strong>Hoàn thiện sản phẩm</strong>
+              <p>Chèn mã QR vào website hoặc sản phẩm giới thiệu (poster/infographic/tài liệu). Thiết kế poster STEM giới thiệu dự án với các mã QR dẫn đến từng phần của kho tài liệu. Đăng tải website chính thức.</p>
+            </li>
+          </ul>
+
+          <h4 style="margin-top:12px">Ứng dụng thực tiễn của sản phẩm</h4>
+          <p>Sản phẩm website “Kho đề ôn thi vào 10 – Học Văn cùng cô Oanh” kết hợp mã QR mang lại nhiều ứng dụng thực tiễn trong học tập và giảng dạy, cụ thể:</p>
+          <ul>
+            <li><strong>Hỗ trợ học sinh ôn thi vào 10 hiệu quả:</strong> Cung cấp kho tài liệu phong phú gồm đề thi, văn mẫu, dàn ý, kỹ năng làm bài. Học sinh có thể tự học mọi lúc, mọi nơi chỉ bằng điện thoại quét mã QR. Giúp tiết kiệm thời gian tìm kiếm tài liệu, tránh tình trạng tài liệu phân tán và thiếu chính xác.</li>
+            <li><strong>Công cụ hỗ trợ giáo viên giảng dạy:</strong> Tăng tính trực quan và hiện đại trong các tiết học Ngữ văn. Giúp giáo viên tổ chức kiểm tra, ôn tập nhanh chóng hơn.</li>
+            <li><strong>Tăng tính chủ động cho người học:</strong> Với mỗi chủ đề có mã QR riêng, học sinh tự lựa chọn nội dung cần ôn tập. Rèn luyện kỹ năng tự học.</li>
+            <li><strong>Ứng dụng trong hoạt động nhà trường:</strong> Nhà trường có thể giới thiệu tài liệu ôn thi cho toàn khối 9 thông qua mã QR đặt tại bảng tin hoặc lớp học. Hỗ trợ các buổi chuyên đề, hoạt động ngoại khóa môn Ngữ văn. Có thể tích hợp vào tờ rơi, poster tuyên truyền ôn thi.</li>
+            <li><strong>Góp phần chuyển đổi số trong giáo dục:</strong> Sản phẩm phù hợp với xu hướng học tập trực tuyến và chuyển đổi số hiện nay. Khuyến khích học sinh làm quen với công nghệ, đặc biệt là quét mã QR và truy cập tài liệu online. Tiết kiệm chi phí photo tài liệu và giảm sử dụng giấy, thân thiện với môi trường.</li>
+          </ul>
+
+          <h4 style="margin-top:12px">Khả năng mở rộng và phát triển lâu dài</h4>
+          <p>Website có thể được bổ sung nhiều tài liệu mới hằng năm. Mã QR có thể liên kết đến các video bài giảng, bài tập tự luyện, ngân hàng câu hỏi. Có thể phát triển thêm cho các môn học khác (Toán, Anh, Lý…).</p>
+
+        </section>
+
+        <section class="section">
+          <h3>III. Vận dụng kiến thức các môn học</h3>
+          <p>Trong quá trình thực hiện dự án, chúng em đã vận dụng kiến thức của nhiều môn học khác nhau để hoàn thiện sản phẩm. Cụ thể:</p>
+
+          <p><strong>Môn Tin học</strong></p>
+          <ul>
+            <li>Thiết kế và xây dựng website: Vận dụng kiến thức về lập trình HTML/CSS cho giao diện và Python để xử lý nội dung, tạo trang web động và dễ cập nhật.</li>
+            <li>Tạo bố cục và trình bày nội dung: Sử dụng kỹ năng chèn văn bản, hình ảnh, tạo menu và liên kết giữa các trang, đảm bảo giao diện trực quan, dễ truy cập cho học sinh.</li>
+            <li>Tạo và sử dụng mã QR: Biết cách sinh mã QR liên kết trực tiếp đến từng trang nội dung trên website, giúp truy cập nhanh chóng và tiện lợi.</li>
+            <li>Quản lý tệp và tối ưu hóa: Áp dụng kỹ năng quản lý tệp, tải lên máy chủ, tối ưu hóa hình ảnh và tài liệu để website chạy mượt mà và tiết kiệm dung lượng.</li>
+          </ul>
+
+          <p><strong>Môn Ngữ văn</strong></p>
+          <ul>
+            <li>Vận dụng kiến thức về thể loại văn học, phương pháp làm bài nghị luận, đọc hiểu để chọn lọc tài liệu phù hợp.</li>
+            <li>Biên soạn nội dung, trình bày văn bản đúng ngữ pháp, rõ ràng, mạch lạc.</li>
+            <li>Thể hiện khả năng tổng hợp và phân tích kiến thức để xây dựng kho đề thi và văn mẫu.</li>
+            <li>Tạo các hướng dẫn kỹ năng làm bài theo chương trình Ngữ văn 9 (theo hướng dẫn của giáo viên bộ môn).</li>
+          </ul>
+
+        </section>
+
+        <section class="section">
+          <h3>IV. Hướng dẫn sử dụng sản phẩm</h3>
+          <ol>
+            <li>Mở ứng dụng quét mã QR trên điện thoại.</li>
+            <li>Quét vào mã QR của chủ đề cần học.</li>
+            <li>Chọn tài liệu: bài mẫu, dàn ý, phân tích tác phẩm…</li>
+          </ol>
+        </section>
+
+        <footer style="margin-top:24px;color:#555;font-size:13px">
+          <div>© Kho Đề Ôn Vào 10 — Tuyên Quang · Liên hệ: <a href="mailto:minhtuan11hg@gmail.com">minhtuan11hg@gmail.com</a></div>
+        </footer>
+
+      </article>
+    </main>
+  </div>
+</body>
+</html>
